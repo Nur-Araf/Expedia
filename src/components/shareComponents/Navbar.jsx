@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
@@ -43,8 +43,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <NavLink to="/" className="text-xl font-bold">
-              BrandName
+            <NavLink to="/">
+              <img
+                src="/Logo.png"
+                alt="Expedia"
+                className="h-32 w-40 cursor-pointer"
+              />
             </NavLink>
           </div>
 
@@ -91,113 +95,183 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           {!isMobile && (
-            <div className="hidden md:flex space-x-6">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-                }
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-                }
-              >
-                About
-              </NavLink>
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-                }
-              >
-                Services
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-                }
-              >
-                Contact
-              </NavLink>
-              <NavLink
-                to="/log-in"
-                className={({ isActive }) =>
-                  `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-                }
-              >
-                Log In
-              </NavLink>
-              <NavLink
-                to="/sign-up"
-                className={({ isActive }) =>
-                  `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-                }
-              >
-                Sign Up
-              </NavLink>
-              <button onClick={logOut}>Log Out</button>
-            </div>
+            <>
+              <div className="hidden md:flex space-x-6">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                  }
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/community"
+                  className={({ isActive }) =>
+                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                  }
+                >
+                  Community
+                </NavLink>
+                <NavLink
+                  to="/about-us"
+                  className={({ isActive }) =>
+                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                  }
+                >
+                  About Us
+                </NavLink>
+                <NavLink
+                  to="/trips"
+                  className={({ isActive }) =>
+                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                  }
+                >
+                  Trips
+                </NavLink>
+              </div>
+              <div className="hidden lg:flex space-x-4">
+                {user ? (
+                  <>
+                    <div className="relative inline-block group">
+                      <img
+                        src={user?.photoURL}
+                        alt="profile"
+                        className="w-10 h-10 rounded-full mr-4 cursor-pointer"
+                      />
+                      <div className="absolute w-52 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 text-sm text-blue-700 bg-[#F4E3CF] border border-white p-2 rounded mt-2 z-50">
+                        <p className="hover:text-blue-900 font-semibold cursor-pointer">
+                          {user?.displayName}
+                        </p>
+                        <p className="hover:text-blue-900 font-semibold cursor-pointer my-2">
+                          {user?.email}
+                        </p>
+                        <div className="flex flex-col">
+                          <Link
+                            to={"/dashboard"}
+                            className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                          >
+                            Dashboard
+                          </Link>
+                          <button
+                            className=" text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                            onClick={() => logOut()}
+                          >
+                            Log out
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <NavLink
+                      to="/sign-up"
+                      className="h-fit text-blue-700 font-semibold hover:bg-gray-500 bg-[#F4E3CF] px-4 py-3 rounded-md"
+                    >
+                      Sign Up
+                    </NavLink>
+                    <NavLink
+                      to="/log-in"
+                      className="h-fit text-blue-700 font-semibold hover:bg-gray-500 bg-[#F4E3CF]  px-4 py-3 rounded-md"
+                    >
+                      Log In
+                    </NavLink>
+                  </>
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && isMobile && (
-        <div className="md:hidden h-screen bg-gray-800 space-y-4 px-4 pb-4">
+        <div className="md:hidden h-screen bg-blue-800 bg-opacity-90 space-y-4 px-4 pb-4 pt-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
             }
           >
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/community"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
             }
           >
-            About
+            Community
           </NavLink>
           <NavLink
-            to="/services"
+            to="/about-us"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
             }
           >
-            Services
+            About Us
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/trips"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
             }
           >
-            Contact
+            Trips
           </NavLink>
-          <NavLink
-            to="/log-in"
-            className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-            }
-          >
-            Log In
-          </NavLink>
-          <NavLink
-            to="/sign-up"
-            className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
-            }
-          >
-            Sing Up
-          </NavLink>
-          <button onClick={logOut}>Log Out</button>
+          {user ? (
+            <div className="flex items-center ml-2">
+              <div className="relative inline-block group">
+                <img
+                  src={user?.photoURL}
+                  alt="profile"
+                  className="w-8 h-8 rounded-full mr-4 cursor-pointer"
+                />
+                <div className="absolute w-52 -bottom-6 left-1/2 transform translate-y-full opacity-0 group-hover:opacity-100 text-sm text-blue-700 bg-[#F4E3CF] border border-white p-2 rounded mt-2 z-50">
+                  <p className="hover:text-blue-900 font-semibold cursor-pointer">
+                    {user?.displayName}
+                  </p>
+                  <p className="hover:text-blue-900 font-semibold cursor-pointer my-2">
+                    {user?.email}
+                  </p>
+                  <div className="flex flex-col">
+                    <Link
+                      to={"/dashboard"}
+                      className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      className=" text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                      onClick={() => logOut()}
+                    >
+                      Log out
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <NavLink
+                to="/sign-up"
+                className="text-blue-700 font-semibold hover:bg-gray-500 text-center bg-[#F4E3CF] block px-4 py-2 rounded-md text-base "
+                activeclassname="bg-blue-700"
+                onClick={toggleMenu}
+              >
+                Sign In
+              </NavLink>
+              <NavLink
+                to="/log-in"
+                className="text-blue-700 text-center bg-[#F4E3CF] hover:bg-gray-500 block px-4 py-2 rounded-md text-base font-medium"
+                activeclassname="bg-gray-700"
+                onClick={toggleMenu}
+              >
+                Log In
+              </NavLink>
+            </>
+          )}
         </div>
       )}
     </nav>

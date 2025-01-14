@@ -8,6 +8,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase.init";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
@@ -38,15 +39,41 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+   useEffect(() => {
+     const unSubscribe = onAuthStateChanged(auth, (user) => {
+       setUser(user);
+
+       if (user?.email) {
+         const userEmail = { email: user.email };
+         axios
+           .post("http://localhost:5000/jwt", userEmail, {
+             withCredentials: true,
+           })
+           .then((data) => {
+             console.log("Response Data:", data.data);
+             setLoading(false);
+           })
+           .catch((error) => {
+             console.error("Error:", error);
+           });
+       } else {
+         axios
+           .post(
+             "http://localhost:5000/logout",
+             {},
+             {
+               withCredentials: true,
+             }
+           )
+           .then((data) => {
+             console.log("Logout", data.data), setLoading(false);
+           })
+           .catch((err) => console.log(err));
+       }
+     });
+
+     return () => unSubscribe();
+   }, []);
 
   const authInfo = {    
     user,

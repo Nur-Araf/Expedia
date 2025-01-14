@@ -14,12 +14,20 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "/about",
+        path: "/about-us",
         element: <h1>About</h1>,
       },
       {
-        path: "/contact",
-        element: <h1>Contact</h1>,
+        path: "/community",
+        element: <h1>community</h1>,
+      },
+      {
+        path: "/trips",
+        element: <h1>trips</h1>,
+      },
+      {
+        path: "/dashboard",
+        element: <h1>dashboard</h1>,
       },
       {
         path: "/log-in",

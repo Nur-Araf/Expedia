@@ -1,53 +1,33 @@
 
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
   FaLinkedinIn,
+  FaGithub,
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-blue-800 bg-opacity-90 text-white">
       <div className="container mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-white text-xl font-semibold mb-4">Company</h3>
+            <div>
+              <NavLink to="/">
+                <img
+                  src="/Logo.png"
+                  alt="Expedia"
+                  className="h-32 w-40 cursor-pointer"
+                />
+              </NavLink>
+            </div>
             <p className="text-sm leading-6">
               We are committed to delivering the best services to our customers.
               Our mission is to provide top-notch solutions that make your life
               easier.
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white text-xl font-semibold mb-4">
-              Quick Links
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-blue-500 transition">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-500 transition">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-500 transition">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-500 transition">
-                  Contact
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Services */}
@@ -91,10 +71,10 @@ const Footer = () => {
                 <FaFacebookF />
               </a>
               <a
-                href="#"
+                href="https://github.com/Nur-Araf"
                 className="p-2 bg-gray-800 rounded-full hover:bg-blue-500 transition"
               >
-                <FaTwitter />
+                <FaGithub />
               </a>
               <a
                 href="#"
@@ -103,7 +83,7 @@ const Footer = () => {
                 <FaInstagram />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/nur-araf-shishir-4798a4308/"
                 className="p-2 bg-gray-800 rounded-full hover:bg-blue-700 transition"
               >
                 <FaLinkedinIn />
@@ -113,7 +93,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-700 mt-8"></div>
+        <div className="border-t border-[#F4E3CF] mt-8"></div>
 
         {/* Copyright */}
         <div className="text-center mt-4 text-sm">
