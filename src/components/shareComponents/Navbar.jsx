@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -36,7 +38,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-blue-800 bg-opacity-90 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -123,7 +125,7 @@ const Navbar = () => {
                 Contact
               </NavLink>
               <NavLink
-                to="/login"
+                to="/log-in"
                 className={({ isActive }) =>
                   `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
                 }
@@ -131,13 +133,14 @@ const Navbar = () => {
                 Log In
               </NavLink>
               <NavLink
-                to="/signup"
+                to="/sign-up"
                 className={({ isActive }) =>
                   `hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
                 }
               >
                 Sign Up
               </NavLink>
+              <button onClick={logOut}>Log Out</button>
             </div>
           )}
         </div>
@@ -179,21 +182,22 @@ const Navbar = () => {
             Contact
           </NavLink>
           <NavLink
-            to="/login"
+            to="/log-in"
             className={({ isActive }) =>
               `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
             }
           >
-           Log In
+            Log In
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/sign-up"
             className={({ isActive }) =>
               `block hover:text-gray-400 ${isActive ? "text-blue-500" : ""}`
             }
           >
             Sing Up
           </NavLink>
+          <button onClick={logOut}>Log Out</button>
         </div>
       )}
     </nav>

@@ -9,8 +9,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import SingUpAnimation from "../animations/SingUpAni";
 
 const SignUp = () => {
-  // const { setUser, singInWithGoogle, createUser } = useContext(AuthContext);
-  const { setUser, singInWithGoogle, createUser } = useContext(AuthContext);
+  const { setUser, signInWithGoogle, createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -51,7 +50,7 @@ const SignUp = () => {
 
   const handleGmailSignIn = async () => {
     try {
-      const res = await singInWithGoogle();
+      const res = await signInWithGoogle();
       toast.success("Registration successful!");
       setUser(res.user);
       navigate("/");
@@ -236,7 +235,7 @@ const SignUp = () => {
             </button>
           </div>
 
-          <p className="mt-4 text-center text-gray-300">
+          <p className="mt-4 text-center text-black">
             Already have an account?{" "}
             <Link to="/log-in" className="text-blue-600 font-semibold">
               Login here
