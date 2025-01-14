@@ -39,41 +39,61 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-   useEffect(() => {
-     const unSubscribe = onAuthStateChanged(auth, (user) => {
-       setUser(user);
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
 
-       if (user?.email) {
-         const userEmail = { email: user.email };
-         axios
-           .post("http://localhost:5000/jwt", userEmail, {
-             withCredentials: true,
-           })
-           .then((data) => {
-             console.log("Response Data:", data.data);
-             setLoading(false);
-           })
-           .catch((error) => {
-             console.error("Error:", error);
-           });
-       } else {
-         axios
-           .post(
-             "http://localhost:5000/logout",
-             {},
-             {
-               withCredentials: true,
-             }
-           )
-           .then((data) => {
-             console.log("Logout", data.data), setLoading(false);
-           })
-           .catch((err) => console.log(err));
-       }
-     });
+      if (user?.email) {
+        const userEmail = { email: user.email };
 
-     return () => unSubscribe();
-   }, []);
+        axios
+          .post("http://localhost:5000/users", userEmail)
+          .then((response) => {
+            console.log("User added to the database:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error adding user to the database:", error);
+          });
+
+        axios
+          .post("http://localhost:5000/jwt", userEmail, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            console.log("JWT Response Data:", data.data);
+            const token = data.data?.accessToken;
+            if (token) {
+              localStorage.setItem("accessToken", token);
+            }
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("JWT Error:", error);
+          });
+      } else {
+        // Handle logout
+        axios
+          .post(
+            "http://localhost:5000/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((data) => {
+            console.log("Logout:", data.data);
+            localStorage.removeItem("accessToken");
+            setLoading(false);
+          })
+          .catch((err) => console.log("Logout Error:", err));
+      }
+    });
+
+    // Cleanup subscription on component unmount
+    return () => unSubscribe();
+  }, []);
+
+
 
   const authInfo = {    
     user,

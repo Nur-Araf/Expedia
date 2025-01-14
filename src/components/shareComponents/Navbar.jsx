@@ -100,7 +100,7 @@ const Navbar = () => {
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   Home
@@ -108,7 +108,7 @@ const Navbar = () => {
                 <NavLink
                   to="/community"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   Community
@@ -116,7 +116,7 @@ const Navbar = () => {
                 <NavLink
                   to="/about-us"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   About Us
@@ -124,7 +124,7 @@ const Navbar = () => {
                 <NavLink
                   to="/trips"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   Trips
@@ -191,7 +191,7 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
             }
           >
             Home
@@ -199,7 +199,7 @@ const Navbar = () => {
           <NavLink
             to="/community"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
             }
           >
             Community
@@ -207,7 +207,7 @@ const Navbar = () => {
           <NavLink
             to="/about-us"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
             }
           >
             About Us
@@ -215,7 +215,7 @@ const Navbar = () => {
           <NavLink
             to="/trips"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-500" : ""}`
+              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
             }
           >
             Trips

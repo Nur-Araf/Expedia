@@ -110,9 +110,9 @@ const LoginPage = () => {
             {errors.password && (
               <p className="text-sm text-red-500">{errors.password.message}</p>
             )}
-            <a href="#" className="text-sm text-blue-500 hover:underline">
+            <Link to={"/forget-password"} className="text-sm text-blue-500 hover:underline">
               Forgot Password?
-            </a>
+            </Link>
           </div>
 
           <div className="flex justify-between items-center">

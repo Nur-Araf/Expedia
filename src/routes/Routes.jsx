@@ -3,6 +3,7 @@ import App from "../App";
 import LandingPage from "../components/landingPages/LandingPage";
 import LoginPage from "../components/authComponents/LoginPage";
 import SignUp from "../components/authComponents/SingUp";
+import ForgetPassword from "../components/authComponents/ForgetPassword";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />,
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />,
       },
     ],
   },
