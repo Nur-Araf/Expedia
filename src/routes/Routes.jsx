@@ -7,6 +7,7 @@ import ForgetPassword from "../components/authComponents/ForgetPassword";
 import PrivateRoute from "../components/authComponents/PrivateRoute";
 import Dashboard from "../components/touristDashboard/Dashboard";
 import ManageProfile from "../components/touristDashboard/ManageProfile";
+import Stories from "../components/touristDashboard/Stories";
 
 const router = createBrowserRouter([
   {
@@ -58,10 +59,10 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: "stories",
+            path: "manage-stories",
             element: (
               <PrivateRoute>
-                <h1>My Stories</h1>
+                <h1>Manage Stories</h1>
               </PrivateRoute>
             ),
           },
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
             path: "add-atories",
             element: (
               <PrivateRoute>
-                <h1>Add Stories</h1>
+                <Stories />
               </PrivateRoute>
             ),
           },

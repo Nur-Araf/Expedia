@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { FaUser, FaRegListAlt, FaBars, FaTimes } from "react-icons/fa"; 
 import { IoIosAddCircle } from "react-icons/io";
-import { MdOutlineAutoStories } from "react-icons/md";
+import { SiGoogletagmanager } from "react-icons/si";
 import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -15,12 +15,12 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-[94dvh] md:h-[90dvh] lg:h-[93dvh]">
+    <div className="flex">
       {/* Sidebar */}
       <div
         className={`${
           isSidebarOpen ? "w-32 md:w-64" : "w-14 md:w-16"
-        } transition-all duration-300 bg-[#F4E3CF] bg-opacity-60 text-blue-500 p-4 h-full`}
+        } transition-all duration-300 bg-[#F4E3CF] bg-opacity-60 text-blue-500 p-4 py-12`}
       >
         {/* Sidebar Toggle Button */}
         <button
@@ -56,13 +56,13 @@ const Dashboard = () => {
           </Link>
 
           <Link
-            to={"/dashboard/stories"}
+            to={"/dashboard/manage-stories"}
             className={`${
               isSidebarOpen ? "flex" : "flex"
             } items-center space-x-2 md:space-x-4 text-blue-700 hover:text-blue-500 transition-colors text-sm md:text-base font-medium w-full`}
           >
-            <MdOutlineAutoStories />
-            {isSidebarOpen && <span className="ml-2">Stories</span>}
+            <SiGoogletagmanager />
+            {isSidebarOpen && <span className="ml-2">Manage Stories</span>}
           </Link>
 
           <Link
