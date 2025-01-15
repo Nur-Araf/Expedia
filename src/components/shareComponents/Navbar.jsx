@@ -100,7 +100,9 @@ const Navbar = () => {
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${
+                      isActive ? "text-gray-400" : ""
+                    }`
                   }
                 >
                   Home
@@ -108,7 +110,7 @@ const Navbar = () => {
                 <NavLink
                   to="/community"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   Community
@@ -116,7 +118,7 @@ const Navbar = () => {
                 <NavLink
                   to="/about-us"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   About Us
@@ -124,7 +126,7 @@ const Navbar = () => {
                 <NavLink
                   to="/trips"
                   className={({ isActive }) =>
-                    `hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
                   }
                 >
                   Trips
@@ -191,7 +193,7 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             Home
@@ -199,7 +201,7 @@ const Navbar = () => {
           <NavLink
             to="/community"
             className={({ isActive }) =>
-              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             Community
@@ -207,7 +209,7 @@ const Navbar = () => {
           <NavLink
             to="/about-us"
             className={({ isActive }) =>
-              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             About Us
@@ -215,7 +217,7 @@ const Navbar = () => {
           <NavLink
             to="/trips"
             className={({ isActive }) =>
-              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             Trips
