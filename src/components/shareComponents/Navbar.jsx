@@ -139,7 +139,7 @@ const Navbar = () => {
                         alt="profile"
                         className="w-10 h-10 rounded-full mr-4 cursor-pointer"
                       />
-                      <div className="absolute w-52 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 text-sm text-blue-700 bg-[#F4E3CF] border border-white p-2 rounded mt-2 z-50">
+                      <div className="absolute w-52 -bottom-2 -left-20 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 text-sm text-blue-700 bg-[#F4E3CF] border border-white p-2 rounded mt-2 z-50">
                         <p className="hover:text-blue-900 font-semibold cursor-pointer">
                           {user?.displayName}
                         </p>
@@ -157,7 +157,7 @@ const Navbar = () => {
                             className=" text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
                             onClick={() => logOut()}
                           >
-                            Log out
+                            Log Out
                           </button>
                         </div>
                       </div>

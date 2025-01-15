@@ -1,9 +1,10 @@
+import BannerSlider from "./BannerSlider";
 
 
 const LandingPage = () => {
   return (
-    <div>
-      Landing page
+    <div className="overflow-hidden">
+      <BannerSlider />
     </div>
   );
 };
