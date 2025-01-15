@@ -15,7 +15,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-[93dvh]">
+    <div className="flex h-[94dvh] md:h-[90dvh] lg:h-[93dvh]">
       {/* Sidebar */}
       <div
         className={`${

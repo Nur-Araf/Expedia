@@ -6,6 +6,7 @@ import SignUp from "../components/authComponents/SingUp";
 import ForgetPassword from "../components/authComponents/ForgetPassword";
 import PrivateRoute from "../components/authComponents/PrivateRoute";
 import Dashboard from "../components/touristDashboard/Dashboard";
+import ManageProfile from "../components/touristDashboard/ManageProfile";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
             path: "profile",
             element: (
               <PrivateRoute>
-                <h1>Manage Profile</h1>
+                <ManageProfile />
               </PrivateRoute>
             ),
           },
