@@ -29,26 +29,25 @@ const BannerSlider = () => {
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[92dvh] object-cover"
+              className="block w-full h-[92dvh] object-cover"
             />
             {/* Black overlay */}
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
             <div className="absolute top-[20%] left-1/2 transform -translate-x-1/2 text-center">
-              <p className="text-blue-500 text-[6rem] font-bold tracking-widest">
+              <p className="text-blue-500 text-[4rem] lg:text-[5rem] xl:text-[6rem] font-bold tracking-widest">
                 Expedia
               </p>
-              <p className="text-blue-500 text-lg font-semibold tracking-wide">
+              <p className="text-blue-500 md:text-lg font-semibold tracking-wide">
                 Explore the World, Your Journey Starts Here
               </p>
               {/* Search Input */}
-              {/* TODO : Search Input */}
-              <div className="mt-28 flex justify-center">
+              <div className="mt-8 md:mt-12 lg:mt-28 flex justify-center">
                 <input
                   type="text"
                   placeholder="Search destinations, hotels, or tours..."
-                  className="px-4 py-2 w-[90%] max-w-[1200px] text-blue-500 text-lg border border-blue-500 rounded-l-md focus:outline-none"
+                  className="px-3 py-2 md:px-4 md:py-2 w-[90%] max-w-[1200px] text-blue-500 text-sm lg:text-lg border border-blue-500 rounded-l-md focus:outline-none"
                 />
-                <button className="bg-blue-500 px-6 py-2 text-white text-lg font-semibold rounded-r-md hover:bg-blue-600">
+                <button className="bg-blue-500 px-4 py-2 md:px-6 md:py-2 text-white text-base lg:text-lg font-semibold rounded-r-md hover:bg-blue-600">
                   Search
                 </button>
               </div>

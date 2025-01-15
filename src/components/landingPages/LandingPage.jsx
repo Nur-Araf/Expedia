@@ -1,11 +1,13 @@
 import BannerSlider from "./BannerSlider";
+import TourGuideOverview from "./OverView";
 
 
 const LandingPage = () => {
   return (
-    <div className="overflow-hidden">
+    <>
       <BannerSlider />
-    </div>
+      <TourGuideOverview />
+    </>
   );
 };
 

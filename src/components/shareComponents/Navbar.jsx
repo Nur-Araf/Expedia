@@ -187,11 +187,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && isMobile && (
-        <div className="md:hidden h-screen bg-blue-800 bg-opacity-90 space-y-4 px-4 pb-4 pt-4">
+        <div className="md:hidden h-screen bg-[url('/Travel.jpg')] bg-cover text-blue-500 space-y-4 px-4 pb-4 pt-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             Home
@@ -199,7 +199,7 @@ const Navbar = () => {
           <NavLink
             to="/community"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             Community
@@ -207,7 +207,7 @@ const Navbar = () => {
           <NavLink
             to="/about-us"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             About Us
@@ -215,7 +215,7 @@ const Navbar = () => {
           <NavLink
             to="/trips"
             className={({ isActive }) =>
-              `block hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+              `block hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
             }
           >
             Trips
