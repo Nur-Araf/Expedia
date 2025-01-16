@@ -10,6 +10,7 @@ import ManageProfile from "../components/touristDashboard/ManageProfile";
 import Stories from "../components/touristDashboard/Stories";
 import ManageStories from "../components/touristDashboard/ManageStories";
 import UpdateStory from "../components/touristDashboard/UpdateStory";
+import JoinAsTourGuid from "../components/touristDashboard/JoinAsTourGuid";
 
 const router = createBrowserRouter([
   {
@@ -88,7 +89,7 @@ const router = createBrowserRouter([
             path: "join-as-tour-guide",
             element: (
               <PrivateRoute>
-                <h1>Join as Tour Guide</h1>
+                <JoinAsTourGuid />
               </PrivateRoute>
             ),
           },
