@@ -57,7 +57,7 @@ const Stories = () => {
   };
 
   return (
-    <div className="flex justify-center items-center lg:h-[86dvh]">
+    <div className="flex justify-center items-center xl:min-h-[86dvh]">
       <div className="p-4 md:p-6 bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200 w-full max-w-2xl">
         <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-500 text-center mb-4">
           Add A Story
