@@ -38,9 +38,6 @@ const Stories = () => {
         story: data.story,
         image: imageUrl,
       };
-
-      console.log("Submitted Story:", storyData);
-
       try {
         axiosScure.post("/stories", storyData).then((res) => {
           if (res.data.insertedId) {

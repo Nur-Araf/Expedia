@@ -88,7 +88,6 @@ const AuthProvider = ({ children }) => {
       }
     });
 
-    // Cleanup subscription on component unmount
     return () => unSubscribe();
   }, []);
 

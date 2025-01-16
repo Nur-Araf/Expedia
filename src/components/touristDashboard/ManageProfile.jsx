@@ -38,7 +38,7 @@ const ManageProfile = () => {
 
 
   return (
-    <div className="lg:h-[80dvh]">
+    <div className="lg:min-h-[80dvh]">
       <div className="p-4 sm:p-6 max-w-md sm:max-w-lg mx-auto bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200">
         <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-500 text-center">
           Welcome, {user.displayName}!

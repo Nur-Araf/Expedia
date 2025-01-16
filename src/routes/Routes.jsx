@@ -8,6 +8,7 @@ import PrivateRoute from "../components/authComponents/PrivateRoute";
 import Dashboard from "../components/touristDashboard/Dashboard";
 import ManageProfile from "../components/touristDashboard/ManageProfile";
 import Stories from "../components/touristDashboard/Stories";
+import ManageStories from "../components/touristDashboard/ManageStories";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,15 @@ const router = createBrowserRouter([
             path: "manage-stories",
             element: (
               <PrivateRoute>
-                <h1>Manage Stories</h1>
+                <ManageStories />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "update-story/:id",
+            element: (
+              <PrivateRoute>
+                <h1>Manage Stories Details</h1>
               </PrivateRoute>
             ),
           },
