@@ -11,6 +11,8 @@ import Stories from "../components/touristDashboard/Stories";
 import ManageStories from "../components/touristDashboard/ManageStories";
 import UpdateStory from "../components/touristDashboard/UpdateStory";
 import JoinAsTourGuid from "../components/touristDashboard/JoinAsTourGuid";
+import TourPackagesDetails from "../components/landingPages/packages/TourPackagesDetails";
+import GiudeProfile from "../components/landingPages/packages/GiudeProfile";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <h1>Trips</h1>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/packages/:id",
+        element: (
+          <PrivateRoute>
+            <TourPackagesDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/tourGuides/:id",
+        element: (
+          <PrivateRoute>
+            <GiudeProfile />
           </PrivateRoute>
         ),
       },

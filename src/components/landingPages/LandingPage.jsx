@@ -1,5 +1,6 @@
 import BannerSlider from "./BannerSlider";
 import TourGuideOverview from "./OverView";
+import TourismAndGuide from "./Tourism&Guide";
 
 
 const LandingPage = () => {
@@ -7,6 +8,7 @@ const LandingPage = () => {
     <>
       <BannerSlider />
       <TourGuideOverview />
+      <TourismAndGuide />
     </>
   );
 };
