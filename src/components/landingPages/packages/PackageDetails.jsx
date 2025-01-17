@@ -88,7 +88,7 @@ const PackageDetails = ({ id }) => {
             <div className="mt-6 text-center">
               <Link
                 to={`/book/${id}`}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md shadow-md transition-transform transform hover:scale-105"
+                className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform hover:scale-105"
               >
                 Book Now
               </Link>

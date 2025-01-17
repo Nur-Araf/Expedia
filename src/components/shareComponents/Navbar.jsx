@@ -56,10 +56,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-opacity-90 top-0 sticky z-50 ${
+      className={`bg-opacity-90 top-0 sticky transition-all duration-300 z-50 ${
         isScrolling
           ? "text-blue-700 bg-[#F4E3CF] border-b-2 border-blue-700"
-          : "text-white bg-blue-800"
+          : "text-white bg-gradient-to-r from-blue-500 to-indigo-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -81,7 +81,7 @@ const TourGuideOverview = () => {
         </div>
 
         {/* Call to Action */}
-        <button className="mt-10 bg-blue-600 text-white text-lg py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">
+        <button className="mt-10 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg py-2 px-6 rounded-lg shadow-md hover:from-blue-600 hover:to-indigo-700 transition-colors duration-300">
           Start Your Journey
         </button>
       </div>

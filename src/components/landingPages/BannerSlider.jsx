@@ -47,7 +47,7 @@ const BannerSlider = () => {
                   placeholder="Search destinations, hotels, or tours..."
                   className="px-3 py-2 md:px-4 md:py-2 w-[90%] max-w-[1200px] text-blue-500 text-sm lg:text-lg border border-blue-500 rounded-l-md focus:outline-none"
                 />
-                <button className="bg-blue-500 px-4 py-2 md:px-6 md:py-2 text-white text-base lg:text-lg font-semibold rounded-r-md hover:bg-blue-600">
+                <button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 px-4 py-2 md:px-6 md:py-2 text-white text-base lg:text-lg font-semibold rounded-r-md">
                   Search
                 </button>
               </div>
