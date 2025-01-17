@@ -41,19 +41,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/packages/:id",
-        element: (
-          <PrivateRoute>
-            <TourPackagesDetails />
-          </PrivateRoute>
-        ),
+        element: <TourPackagesDetails />,
       },
       {
         path: "/tourGuides/:id",
-        element: (
-          <PrivateRoute>
-            <GiudeProfile />
-          </PrivateRoute>
-        ),
+        element: <GiudeProfile />,
+      },
+      {
+        path: "/book/:id",
+        element: <h1>Book</h1>,
       },
       {
         path: "/dashboard",

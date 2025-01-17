@@ -2,10 +2,27 @@ import { useState, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      // Adjust the threshold as needed
+      setIsScrolling(true);
+    } else {
+      setIsScrolling(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -38,7 +55,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-blue-800 bg-opacity-90 text-white">
+    <nav
+      className={`bg-opacity-90 top-0 sticky z-50 ${
+        isScrolling
+          ? "text-blue-700 bg-[#F4E3CF] border-b-2 border-blue-700"
+          : "text-white bg-blue-800"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -110,7 +133,9 @@ const Navbar = () => {
                 <NavLink
                   to="/community"
                   className={({ isActive }) =>
-                    `text-base font-medium hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${
+                      isActive ? "text-gray-400" : ""
+                    }`
                   }
                 >
                   Community
@@ -118,7 +143,9 @@ const Navbar = () => {
                 <NavLink
                   to="/about-us"
                   className={({ isActive }) =>
-                    `text-base font-medium hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${
+                      isActive ? "text-gray-400" : ""
+                    }`
                   }
                 >
                   About Us
@@ -126,7 +153,9 @@ const Navbar = () => {
                 <NavLink
                   to="/trips"
                   className={({ isActive }) =>
-                    `text-base font-medium hover:text-gray-400 ${isActive ? "text-gray-400" : ""}`
+                    `text-base font-medium hover:text-gray-400 ${
+                      isActive ? "text-gray-400" : ""
+                    }`
                   }
                 >
                   Trips
@@ -135,34 +164,44 @@ const Navbar = () => {
               <div className="hidden lg:flex space-x-4">
                 {user ? (
                   <>
-                    <div className="relative inline-block group">
+                    <div
+                      className="relative inline-block"
+                      onMouseEnter={() => setIsToggleOpen(true)}
+                      onMouseLeave={() => setIsToggleOpen(false)}
+                    >
                       <img
                         src={user?.photoURL}
                         alt="profile"
                         className="w-10 h-10 rounded-full mr-4 cursor-pointer"
                       />
-                      <div className="absolute w-52 -bottom-2 -left-20 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 text-sm text-blue-700 bg-[#F4E3CF] border border-white p-2 rounded mt-2 z-50">
-                        <p className="hover:text-blue-900 font-semibold cursor-pointer">
-                          {user?.displayName}
-                        </p>
-                        <p className="hover:text-blue-900 font-semibold cursor-pointer my-2">
-                          {user?.email}
-                        </p>
-                        <div className="flex flex-col">
-                          <Link
-                            to={"/dashboard"}
-                            className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
-                          >
-                            Dashboard
-                          </Link>
-                          <button
-                            className=" text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
-                            onClick={() => logOut()}
-                          >
-                            Log Out
-                          </button>
+                      {isToggleOpen && (
+                        <div
+                          className={`absolute w-52 -bottom-1 -left-24 transform -translate-x-1/2 translate-y-full opacity-100 text-sm text-blue-700 bg-[#F4E3CF] border-[2px] p-2 rounded mt-2 z-50 ${
+                            isScrolling ? "border-blue-500" : "border-white"
+                          }`}
+                        >
+                          <p className="hover:text-blue-900 font-semibold cursor-pointer">
+                            {user?.displayName}
+                          </p>
+                          <p className="hover:text-blue-900 font-semibold cursor-pointer my-2">
+                            {user?.email}
+                          </p>
+                          <div className="flex flex-col">
+                            <Link
+                              to={"/dashboard"}
+                              className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                            >
+                              Dashboard
+                            </Link>
+                            <button
+                              className="text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                              onClick={() => logOut()}
+                            >
+                              Log Out
+                            </button>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </>
                 ) : (
@@ -193,7 +232,9 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${
+                isActive ? "text-blue-800" : ""
+              }`
             }
           >
             Home
@@ -201,7 +242,9 @@ const Navbar = () => {
           <NavLink
             to="/community"
             className={({ isActive }) =>
-              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${
+                isActive ? "text-blue-800" : ""
+              }`
             }
           >
             Community
@@ -209,7 +252,9 @@ const Navbar = () => {
           <NavLink
             to="/about-us"
             className={({ isActive }) =>
-              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${
+                isActive ? "text-blue-800" : ""
+              }`
             }
           >
             About Us
@@ -217,7 +262,9 @@ const Navbar = () => {
           <NavLink
             to="/trips"
             className={({ isActive }) =>
-              `block text-base font-medium hover:text-blue-800 ${isActive ? "text-blue-800" : ""}`
+              `block text-base font-medium hover:text-blue-800 ${
+                isActive ? "text-blue-800" : ""
+              }`
             }
           >
             Trips

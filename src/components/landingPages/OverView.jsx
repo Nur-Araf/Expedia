@@ -21,12 +21,12 @@ const TourGuideOverview = () => {
       description: "Embark on unforgettable adventures with expert guides.",
       icon: "🏞️",
     },
-    {
-      id: 4,
-      title: "Connect with Nature",
-      description: "Experience the beauty of nature from the comfort of your home.",
-      icon: "🌳",
-    },
+    // {
+    //   id: 4,
+    //   title: "Connect with Nature",
+    //   description: "Experience the beauty of nature from the comfort of your home.",
+    //   icon: "🌳",
+    // },
   ];
 
   const ref = useRef(null);
