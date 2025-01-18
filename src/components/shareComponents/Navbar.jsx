@@ -188,7 +188,7 @@ const Navbar = () => {
                           </p>
                           <div className="flex flex-col">
                             <Link
-                              to={"/dashboard"}
+                              to={"/dashboard/profile"}
                               className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
                             >
                               Dashboard
@@ -286,7 +286,7 @@ const Navbar = () => {
                   </p>
                   <div className="flex flex-col">
                     <Link
-                      to={"/dashboard"}
+                      to={"/dashboard/profile"}
                       className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
                     >
                       Dashboard

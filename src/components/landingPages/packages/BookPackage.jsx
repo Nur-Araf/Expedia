@@ -50,6 +50,7 @@ const BookPackage = () => {
       ...data,
       isPending: isPanding,
       placeId: placeId,
+      tourDate: tourDate,
     };
 
     try {
@@ -180,6 +181,7 @@ const BookPackage = () => {
               Tour Guide Name
             </label>
             <Select
+              {...register("tourGuide", { required: true })}
               options={guideOptions}
               onChange={handleChange}
               placeholder="Select a guide"

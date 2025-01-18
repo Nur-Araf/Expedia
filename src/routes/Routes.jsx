@@ -58,6 +58,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/payment/:id",
+        element: (
+          <PrivateRoute>
+            <h1>Pay now</h1>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/dashboard",
         element: (
           <PrivateRoute>

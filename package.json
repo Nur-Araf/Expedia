@@ -33,6 +33,7 @@
     "react-router-dom": "^7.1.1",
     "react-select": "^5.9.0",
     "react-slick": "^0.30.3",
+    "react-table": "^7.8.0",
     "react-tabs": "^6.1.0",
     "react-toastify": "^11.0.2",
     "react-tooltip": "^5.28.0",
