@@ -13,6 +13,7 @@ import UpdateStory from "../components/touristDashboard/UpdateStory";
 import JoinAsTourGuid from "../components/touristDashboard/JoinAsTourGuid";
 import TourPackagesDetails from "../components/landingPages/packages/TourPackagesDetails";
 import GiudeProfile from "../components/landingPages/packages/GiudeProfile";
+import BookPackage from "../components/landingPages/packages/BookPackage";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/book/:id",
-        element: <h1>Book</h1>,
+        element: (
+          <PrivateRoute>
+            <BookPackage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard",
