@@ -28,8 +28,6 @@ const BookPackage = () => {
     { refetchOnWindowFocus: true }
   );
 
-  console.log(getPackage);
-
   useEffect(() => {
     if (getPackage?.price) {
       setValue("price", getPackage.price);
@@ -45,34 +43,43 @@ const BookPackage = () => {
     setValue("tourGuide", selectedOption?.value || "");
   };
 
+
   const onSubmit = async (data) => {
+    const placeId = getPackage.tourPlace;
     const newData = {
       ...data,
-      isPanding: isPanding,
+      isPending: isPanding,
+      placeId: placeId,
     };
 
     try {
-      await axiosSecure.post("/api/booking", newData).then((res) => {
-        if (res.data.insertedId) {
-          Swal.fire({
-            title: "Booking Pending!",
-            text: "Your booking was Pending. Please confirm Booking at Dashboard!",
-            icon: "info",
-            confirmButtonText: "OK",
-          }).then(() => {
-            navigation("/dashboard/bookings");
-          });
-        }
+      const packageExists = await axiosSecure.get("/api/booking/check", {
+        params: { email: user?.email, placeId: getPackage.tourPlace },
       });
-    } catch (error) {
-      console.log("Error during form submission:", error);
 
-      Swal.fire({
-        title: "Error",
-        text: "Something went wrong during booking. Please try again later.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
+      if (packageExists.data.exists) {
+        Swal.fire({
+          title: "Package Already Booked!",
+          text: "You have already booked this package.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        return;
+      }
+
+      const res = await axiosSecure.post("/api/booking", newData);
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "Booking Pending!",
+          text: "Your booking is pending. Please confirm the booking in the Dashboard!",
+          icon: "info",
+          confirmButtonText: "OK",
+        }).then(() => {
+          navigation("/dashboard/bookings");
+        });
+      }
+    } catch (error) {
+      console.error("Error creating booking:", error);
     }
   };
 
@@ -130,7 +137,7 @@ const BookPackage = () => {
               Tourist Email
             </label>
             <input
-              {...register("touristEmail")}
+              {...register("email")}
               type="email"
               value={user.email}
               readOnly

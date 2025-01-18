@@ -14,6 +14,7 @@ import JoinAsTourGuid from "../components/touristDashboard/JoinAsTourGuid";
 import TourPackagesDetails from "../components/landingPages/packages/TourPackagesDetails";
 import GiudeProfile from "../components/landingPages/packages/GiudeProfile";
 import BookPackage from "../components/landingPages/packages/BookPackage";
+import TouristBookings from "../components/touristDashboard/TouristBookings";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
             path: "bookings",
             element: (
               <PrivateRoute>
-                <h1>My Bookings</h1>
+                <TouristBookings />
               </PrivateRoute>
             ),
           },
