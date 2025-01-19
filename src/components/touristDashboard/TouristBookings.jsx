@@ -17,22 +17,6 @@ const TouristBookings = () => {
   );
   const navigate = useNavigate();
 
-  if (allBookings.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full space-y-4">
-        <p className="text-blue-500 text-lg font-semibold">
-          No Bookings Found.
-        </p>
-        <Link
-          to={"/trips"}
-          className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
-        >
-          Book Now
-        </Link>
-      </div>
-    );
-  }
-
   // Map _id to id for uniform access
   const mappedBookings = allBookings.map((booking) => ({
     ...booking,
@@ -56,12 +40,18 @@ const TouristBookings = () => {
         Cell: ({ value }) => (
           <span
             className={`px-2 py-1 rounded-full text-xs font-semibold ${
-              value
+              value === "Pending"
                 ? "bg-yellow-200 text-yellow-800"
-                : "bg-green-200 text-green-800"
+                : value === "In-Review"
+                ? "bg-green-200 text-green-800"
+                : "bg-blue-200 text-blue-800"
             }`}
           >
-            {value ? "Pending" : "In Progress"}
+            {value === "Pending"
+              ? "Pending"
+              : value === "In-Review"
+              ? "In-Review"
+              : "Confirmed"}
           </span>
         ),
       },
@@ -69,7 +59,7 @@ const TouristBookings = () => {
         Header: "Actions",
         Cell: ({ row }) => (
           <div className="flex flex-wrap gap-2">
-            {row.original.isPending ? (
+            {row.original.isPending === "Pending" ? (
               <>
                 <button
                   className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600"
@@ -86,7 +76,9 @@ const TouristBookings = () => {
               </>
             ) : (
               <button className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600">
-                Paid Already
+                {row.original.isPending === "In-Review"
+                  ? "Paid Already"
+                  : "Confirmed"}
               </button>
             )}
           </div>
@@ -126,6 +118,22 @@ const TouristBookings = () => {
       }
     });
   };
+
+  if (allBookings.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full space-y-4">
+        <p className="text-blue-500 text-lg font-semibold">
+          No Bookings Found.
+        </p>
+        <Link
+          to={"/trips"}
+          className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
+        >
+          Book Now
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 lg:p-6 bg-[#F4E3CF] rounded-lg min-h-screen">
@@ -180,7 +188,6 @@ const TouristBookings = () => {
           </tbody>
         </table>
       </div>
-
       {/* Mobile View */}
       <div className="block md:hidden mt-6">
         {mappedBookings.map((booking, index) => (
@@ -202,13 +209,21 @@ const TouristBookings = () => {
               Status:{" "}
               <span
                 className={`font-semibold ${
-                  booking.isPending ? "text-yellow-600" : "text-green-600"
+                  booking.isPending === "Pending"
+                    ? "text-yellow-600"
+                    : booking.isPending === "In-Review"
+                    ? "text-green-600"
+                    : "text-blue-600"
                 }`}
               >
-                {booking.isPending ? "Pending" : "In Progress"}
+                {booking.isPending === "Pending"
+                  ? "Pending"
+                  : booking.isPending === "In-Review"
+                  ? "In-Review"
+                  : "Confirmed"}
               </span>
             </p>
-            {booking.isPending && (
+            {booking.isPending === "Pending" ? (
               <div className="flex gap-2 mt-3">
                 <button
                   className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full"
@@ -223,6 +238,12 @@ const TouristBookings = () => {
                   Cancel
                 </button>
               </div>
+            ) : (
+              <button className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full">
+                {booking.isPending === "In-Review"
+                  ? "Paid Already"
+                  : "Confirmed"}
+              </button>
             )}
           </div>
         ))}

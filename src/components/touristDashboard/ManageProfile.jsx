@@ -41,8 +41,6 @@ const ManageProfile = () => {
       });
   };
 
-
-
   return (
     <div className="lg:min-h-[80dvh]">
       <div className="p-4 sm:p-6 max-w-md sm:max-w-lg mx-auto bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200">
@@ -68,12 +66,14 @@ const ManageProfile = () => {
             Edit Profile
           </button>
 
-          <Link
-            to="/dashboard/join-as-tour-guide"
-            className="mt-4 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-700  text-white text-sm sm:text-base md:text-lg font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300"
-          >
-            Apply For Tour Guide
-          </Link>
+          {userRole === "Tourist" && (
+            <Link
+              to="/dashboard/join-as-tour-guide"
+              className="mt-4 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-700  text-white text-sm sm:text-base md:text-lg font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300"
+            >
+              Apply For Tour Guide
+            </Link>
+          )}
         </div>
 
         {/* DaisyUI Modal */}

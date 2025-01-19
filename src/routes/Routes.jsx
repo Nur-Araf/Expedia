@@ -16,6 +16,8 @@ import GiudeProfile from "../components/landingPages/packages/GiudeProfile";
 import BookPackage from "../components/landingPages/packages/BookPackage";
 import TouristBookings from "../components/touristDashboard/TouristBookings";
 import PaymentPage from "../components/touristDashboard/PaymentPage";
+import GuideRoute from "../components/authComponents/GuideRoute";
+import AssingedBookings from "../components/guideDashboard/AssingedBookings";
 
 const router = createBrowserRouter([
   {
@@ -83,11 +85,27 @@ const router = createBrowserRouter([
             ),
           },
           {
+            path: "guide-profile",
+            element: (
+              <GuideRoute>
+                <ManageProfile />
+              </GuideRoute>
+            ),
+          },
+          {
             path: "bookings",
             element: (
               <PrivateRoute>
                 <TouristBookings />
               </PrivateRoute>
+            ),
+          },
+          {
+            path: "assingned-bookings",
+            element: (
+              <GuideRoute>
+                <AssingedBookings />
+              </GuideRoute>
             ),
           },
           {
@@ -99,6 +117,14 @@ const router = createBrowserRouter([
             ),
           },
           {
+            path: "manageGuide-stories",
+            element: (
+              <GuideRoute>
+                <ManageStories />
+              </GuideRoute>
+            ),
+          },
+          {
             path: "update-story/:id",
             element: (
               <PrivateRoute>
@@ -107,11 +133,27 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: "add-atories",
+            path: "updateGuide-story/:id",
+            element: (
+              <GuideRoute>
+                <UpdateStory />
+              </GuideRoute>
+            ),
+          },
+          {
+            path: "add-stories",
             element: (
               <PrivateRoute>
                 <Stories />
               </PrivateRoute>
+            ),
+          },
+          {
+            path: "addGuide-stories",
+            element: (
+              <GuideRoute>
+                <Stories />
+              </GuideRoute>
             ),
           },
           {

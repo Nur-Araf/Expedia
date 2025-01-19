@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 const BookPackage = () => {
   const { id } = useParams();
   const { user, loading } = useContext(AuthContext);
-  const isPanding = true;
   const navigation = useNavigate();
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, setValue, watch } = useForm();
@@ -40,17 +39,21 @@ const BookPackage = () => {
   }));
 
   const handleChange = (selectedOption) => {
+    const selectedGuide = allGuides.find(
+      (guide) => guide.name === selectedOption?.value
+    );
     setValue("tourGuide", selectedOption?.value || "");
+    setValue("guideEmail", selectedGuide?.email || "");
   };
-
 
   const onSubmit = async (data) => {
     const placeId = getPackage.tourPlace;
     const newData = {
       ...data,
-      isPending: isPanding,
+      isPending: "Pending",
       placeId: placeId,
       tourDate: tourDate,
+      guideEmail: data.guideEmail,
     };
 
     try {

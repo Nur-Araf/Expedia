@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, userRole } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -186,12 +186,30 @@ const Navbar = () => {
                             {user?.email}
                           </p>
                           <div className="flex flex-col">
-                            <Link
-                              to={"/dashboard/profile"}
-                              className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
-                            >
-                              Dashboard
-                            </Link>
+                            {userRole === "Tourist" && (
+                              <Link
+                                to={"/dashboard/profile"}
+                                className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                              >
+                                Dashboard
+                              </Link>
+                            )}
+                            {userRole === "Guide" && (
+                              <Link
+                                to={"/dashboard/guide-profile"}
+                                className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                              >
+                                Dashboard
+                              </Link>
+                            )}
+                            {userRole === "Admin" && (
+                              <Link
+                                to={"/dashboard/Admin-profile"}
+                                className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                              >
+                                Dashboard
+                              </Link>
+                            )}
                             <button
                               className="text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
                               onClick={() => logOut()}
@@ -284,12 +302,30 @@ const Navbar = () => {
                     {user?.email}
                   </p>
                   <div className="flex flex-col">
-                    <Link
-                      to={"/dashboard/profile"}
-                      className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
-                    >
-                      Dashboard
-                    </Link>
+                    {userRole === "Tourist" && (
+                      <Link
+                        to={"/dashboard/profile"}
+                        className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                      >
+                        Dashboard
+                      </Link>
+                    )}
+                    {userRole === "Guide" && (
+                      <Link
+                        to={"/dashboard/guide-profile"}
+                        className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                      >
+                        Dashboard
+                      </Link>
+                    )}
+                    {userRole === "Admin" && (
+                      <Link
+                        to={"/dashboard/admin-profile"}
+                        className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
+                      >
+                        Dashboard
+                      </Link>
+                    )}
                     <button
                       className=" text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
                       onClick={() => logOut()}

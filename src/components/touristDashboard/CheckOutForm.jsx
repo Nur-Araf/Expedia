@@ -105,7 +105,7 @@ const CheckOutForm = ({ id }) => {
 
           // Update booking status to "Not Pending"
           await axiosSecure.patch(`/api/booking/setPending/${id}`, {
-            isPending: false,
+            isPending: "In-Review",
           });
 
           // Display a success message
