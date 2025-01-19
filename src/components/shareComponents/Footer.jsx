@@ -1,4 +1,3 @@
-
 import {
   FaFacebookF,
   FaInstagram,
@@ -25,8 +24,7 @@ const Footer = () => {
             </div>
             <p className="text-sm leading-6">
               We are committed to delivering the best services to our customers.
-              Our mission is to provide top-notch solutions that make your life
-              easier.
+              Our mission is to provide top-notch experience to our clients.
             </p>
           </div>
 
@@ -36,22 +34,22 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <a href="#" className="hover:text-blue-500 transition">
-                  Web Development
+                  Booking Management
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-blue-500 transition">
-                  Mobile App Development
+                  Giving Tour Guide
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-blue-500 transition">
-                  Digital Marketing
+                  Tour Management
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-blue-500 transition">
-                  Graphic Design
+                  Tour Packages
                 </a>
               </li>
             </ul>
@@ -97,7 +95,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center mt-4 text-sm">
-          © {new Date().getFullYear()} Company Name. All Rights Reserved.
+          © {new Date().getFullYear()} Expedia. All Rights Reserved.
         </div>
       </div>
     </footer>

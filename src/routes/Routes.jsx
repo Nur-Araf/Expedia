@@ -15,6 +15,7 @@ import TourPackagesDetails from "../components/landingPages/packages/TourPackage
 import GiudeProfile from "../components/landingPages/packages/GiudeProfile";
 import BookPackage from "../components/landingPages/packages/BookPackage";
 import TouristBookings from "../components/touristDashboard/TouristBookings";
+import PaymentPage from "../components/touristDashboard/PaymentPage";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
         path: "/payment/:id",
         element: (
           <PrivateRoute>
-            <h1>Pay now</h1>
+            <PaymentPage />
           </PrivateRoute>
         ),
       },

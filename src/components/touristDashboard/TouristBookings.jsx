@@ -111,7 +111,7 @@ const TouristBookings = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 bg-[#F4E3CF] rounded-lg min-h-screen">
+    <div className="p-4 lg:p-6 bg-[#F4E3CF] rounded-lg min-h-screen">
       <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
         Bookings
       </h1>
@@ -125,7 +125,7 @@ const TouristBookings = () => {
               <tr
                 key={`header-${index}`}
                 {...headerGroup.getHeaderGroupProps()}
-                className="bg-blue-500 text-white"
+                className="bg-gradient-to-r bg-blue-500 from-blue-600 to-indigo-600 text-white"
               >
                 {headerGroup.headers.map((column) => (
                   <th
@@ -152,7 +152,7 @@ const TouristBookings = () => {
                     <td
                       key={`cell-${cell.column.id}-${row.id}`}
                       {...cell.getCellProps()}
-                      className="px-4 py-2 text-gray-700 text-sm"
+                      className="py-1 px-[2px] lg:px-4 lg:py-2 text-gray-700 text-sm"
                     >
                       {cell.render("Cell")}
                     </td>
