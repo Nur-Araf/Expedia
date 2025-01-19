@@ -17,6 +17,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -69,6 +70,10 @@ const AuthProvider = ({ children }) => {
           .catch((error) => {
             console.error("JWT Error:", error);
           });
+
+        axios.get(`http://localhost:5000/users/${user.email}`).then((res) => {
+          setUserRole(res.data.role);
+        });
       } else {
         // Handle logout
         axios
@@ -91,13 +96,12 @@ const AuthProvider = ({ children }) => {
     return () => unSubscribe();
   }, []);
 
-
-
-  const authInfo = {    
+  const authInfo = {
     user,
     setUser,
     loading,
     createUser,
+    userRole,
     signIn,
     signInWithGoogle,
     logOut,

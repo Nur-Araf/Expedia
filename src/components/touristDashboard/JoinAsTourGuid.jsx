@@ -118,7 +118,7 @@ const JoinAsTourGuid = () => {
 
           <button
             type="submit"
-            className={`w-full bg-blue-500 text-white py-2 px-4 rounded-lg text-base font-medium md:text-lg hover:bg-blue-600 transition-colors ${
+            className={`w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-2 px-4 rounded-lg text-base font-medium md:text-lg hover:bg-blue-600 transition-colors ${
               loading
                 ? "bg-blue-300 cursor-not-allowed"
                 : "bg-blue-500 hover:bg-blue-600"

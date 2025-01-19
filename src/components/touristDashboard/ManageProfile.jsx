@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { auth } from "../../../firebase.init";
 
 const ManageProfile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userRole } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [formData, setFormData] = useState({
     displayName: user.displayName || "",
     photoURL: user.photoURL || "",
@@ -29,12 +30,17 @@ const ManageProfile = () => {
     })
       .then(() => {
         console.log("Profile updated successfully");
+        setFormData({
+          displayName: "",
+          photoURL: "",
+        });
         setIsModalOpen(false);
       })
       .catch((error) => {
         console.error("Error updating profile:", error.message);
       });
   };
+
 
 
   return (
@@ -52,19 +58,19 @@ const ManageProfile = () => {
           />
 
           <p className="mt-4 text-sm sm:text-base md:text-lg text-blue-500">
-            Role: <span className="font-semibold">{user.role || "User"}</span>
+            Role: <span className="font-semibold">{userRole || "User"}</span>
           </p>
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="mt-4 sm:mt-6 px-3 sm:px-4 py-2 sm:py-3 bg-blue-600 text-white text-sm sm:text-base md:text-lg font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="mt-4 sm:mt-6 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm sm:text-base md:text-lg font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
           >
             Edit Profile
           </button>
 
           <Link
             to="/dashboard/join-as-tour-guide"
-            className="mt-4 px-3 sm:px-4 py-2 sm:py-3 bg-green-600 text-white text-sm sm:text-base md:text-lg font-medium rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+            className="mt-4 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-700  text-white text-sm sm:text-base md:text-lg font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300"
           >
             Apply For Tour Guide
           </Link>

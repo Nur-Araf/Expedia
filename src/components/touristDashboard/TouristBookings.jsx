@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../providers/AuthProvider";
 import useFetchData from "../../hooks/GetData";
 import { useTable } from "react-table";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/AxiosSecure";
 import Swal from "sweetalert2";
 
@@ -15,6 +16,22 @@ const TouristBookings = () => {
     `/api/booking/${user.email}`
   );
   const navigate = useNavigate();
+
+  if (allBookings.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full space-y-4">
+        <p className="text-blue-500 text-lg font-semibold">
+          No Bookings Found.
+        </p>
+        <Link
+          to={"/trips"}
+          className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
+        >
+          Book Now
+        </Link>
+      </div>
+    );
+  }
 
   // Map _id to id for uniform access
   const mappedBookings = allBookings.map((booking) => ({

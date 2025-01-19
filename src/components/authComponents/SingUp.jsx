@@ -142,7 +142,7 @@ const SignUp = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-3 text-gray-500"
+                  className="absolute right-3 top-2 text-gray-500"
                 >
                   {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
                 </button>
@@ -175,7 +175,7 @@ const SignUp = () => {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-3 text-gray-500"
+                  className="absolute right-3 top-2 text-gray-500"
                 >
                   {showConfirmPassword ? (
                     <HiEyeOff size={20} />

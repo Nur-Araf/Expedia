@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import useFetchData from "../../hooks/GetData";
 import useAxiosSecure from "../../hooks/AxiosSecure";
+import { AuthContext } from "../../providers/AuthProvider";
+import { useContext } from "react";
 
 const ManageStories = () => {
- const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const {
     data: stories = [],
     isLoading,
-    error,
     refetch,
-  } = useFetchData(["stories"], "/api/stories");
+  } = useFetchData(["stories"], `/api/stories/${user?.email}`);
   const navigate = useNavigate();
 
   const handleDelete = async (storyId) => {
@@ -22,9 +24,34 @@ const ManageStories = () => {
     }
   };
 
-  if (isLoading) return <p>Loading stories...</p>;
-  if (error) return <p>Error fetching stories: {error.message}</p>;
-  if (!stories.length) return <p>No stories found.</p>;
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full space-y-4">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-opacity-70"></div>
+        <p className="text-blue-500 text-lg font-semibold">
+          Loading stories...
+        </p>
+      </div>
+    );
+  }
+
+  if (!stories.length) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full space-y-4">
+        <div className="text-gray-500 text-3xl">📜</div>
+        <p className="text-gray-500 text-lg font-semibold">
+          No stories found. Please create one!
+        </p>
+        <Link
+          to={"/dashboard/add-atories"}
+          className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
+        >
+          Book Now
+        </Link>
+      </div>
+    );
+  }
+
 
   return (
     <div className="min-h-[80dvh]">
@@ -54,13 +81,13 @@ const ManageStories = () => {
             </p>
             <div className="flex gap-2 mt-auto">
               <button
-                className="px-4 py-2 flex-1 font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300"
+                className="px-4 py-2 flex-1 font-medium bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300"
                 onClick={() => navigate(`/dashboard/update-story/${story._id}`)}
               >
                 ✏️ Edit
               </button>
               <button
-                className="px-4 py-2 flex-1 font-medium bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-300"
+                className="px-4 py-2 flex-1 font-medium bg-gradient-to-r from-red-500 to-red-700 text-white rounded-md transition-all duration-300"
                 onClick={() => handleDelete(story._id)}
               >
                 🗑️ Delete
