@@ -204,7 +204,7 @@ const Navbar = () => {
                             )}
                             {userRole === "Admin" && (
                               <Link
-                                to={"/dashboard/Admin-profile"}
+                                to={"/dashboard/admin-profile"}
                                 className="text-center text-white hover:text-blue-700 bg-blue-500 hover:bg-gray-300 border-[2px] border-blue-500 p-2 rounded-md text-sm font-medium mt-2"
                               >
                                 Dashboard

@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
   const fetchUserRole = async (email) => {
     try {
       const response = await axios.get(`http://localhost:5000/users/${email}`);
+      localStorage.setItem("userRole", response.data.role);
       setUserRole(response.data.role);
     } catch (err) {
       console.error("Error fetching user role:", err);

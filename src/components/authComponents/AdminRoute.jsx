@@ -4,15 +4,17 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
-const GuideRoute = ({ children }) => {
-  const { loading, user } = useContext(AuthContext);
+const AdminRoute = ({ children }) => {
+  const { loading, user} = useContext(AuthContext);
+
   const userRole = localStorage.getItem("userRole");
-  useEffect(() => {
-    // Show a toast if the user is not a guide
-    if (!loading && user && userRole !== "Guide") {
-      toast.error("Access Denied: You are not a Guide");
-    }
-  }, [loading, user, userRole]);
+
+   useEffect(() => {
+      // Show a toast if the user is not a guide
+      if (!loading && user && userRole !== "Admin") {
+        toast.error("Access Denied: You are not a Admin");
+      }
+    }, [loading, user, userRole]);
 
   if (loading) {
     return (
@@ -22,12 +24,11 @@ const GuideRoute = ({ children }) => {
     );
   }
 
-  if (user && userRole === "Guide") {
+  if (user && userRole === "Admin") {
     return children;
   }
 
-  // Redirect to the home page if not authorized
-  return <Navigate to="/" />;
+  return <Navigate to="/"></Navigate>;
 };
 
-export default GuideRoute;
+export default AdminRoute;

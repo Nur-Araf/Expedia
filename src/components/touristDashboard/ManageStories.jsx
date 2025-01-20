@@ -6,7 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useContext } from "react";
 
 const ManageStories = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userRole } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const {
     data: stories = [],
@@ -42,12 +42,22 @@ const ManageStories = () => {
         <p className="text-gray-500 text-lg font-semibold">
           No stories found. Please create one!
         </p>
-        <Link
-          to={"/dashboard/add-atories"}
-          className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
-        >
-          Book Now
-        </Link>
+        {userRole === "Tourist" && (
+          <Link
+            to={"/dashboard/add-stories"}
+            className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
+          >
+            Create One
+          </Link>
+        )}
+        {userRole === "Guide" && (
+          <Link
+            to={"/dashboard/addGuide-stories"}
+            className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform"
+          >
+            Create One
+          </Link>
+        )}
       </div>
     );
   }

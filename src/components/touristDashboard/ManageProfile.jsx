@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../../firebase.init";
+import AdminInformation from "../adminDashboard/AdminInformation";
 
 const ManageProfile = () => {
   const { user, userRole } = useContext(AuthContext);
@@ -124,7 +125,7 @@ const ManageProfile = () => {
                     htmlFor="email"
                     className="block text-sm sm:text-base text-gray-700 font-medium"
                   >
-                    Email (Read-only)
+                    Email
                   </label>
                   <input
                     type="email"
@@ -141,13 +142,13 @@ const ManageProfile = () => {
                     htmlFor="role"
                     className="block text-sm sm:text-base text-gray-700 font-medium"
                   >
-                    Role (Read-only)
+                    Role
                   </label>
                   <input
                     type="text"
                     id="role"
                     name="role"
-                    value={user.role || "User"}
+                    value={userRole || "User"}
                     readOnly
                     className="w-full p-2 sm:p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
                   />
@@ -173,6 +174,8 @@ const ManageProfile = () => {
           </div>
         )}
       </div>
+
+      {userRole === "Admin" && <AdminInformation />}
     </div>
   );
 };

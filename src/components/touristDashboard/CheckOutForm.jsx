@@ -97,6 +97,7 @@ const CheckOutForm = ({ id }) => {
           tourDate: myBookings.tourDate,
           tourGuide: myBookings.tourGuide,
           touristName: myBookings.touristName,
+          price: myBookings.price,
         };
 
         try {
