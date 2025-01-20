@@ -40,22 +40,29 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const fetchUserRole = async (email) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/users/${email}`);
+      setUserRole(response.data.role);
+    } catch (err) {
+      console.error("Error fetching user role:", err);
+    }
+  };
+
+  useEffect(() => {
+    if (user?.email) {
+      fetchUserRole(user.email);
+    } else {
+      setUserRole(null);
+    }
+  }, [user]);
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
 
       if (user?.email) {
         const userEmail = { email: user.email };
-
-        axios
-          .post("http://localhost:5000/users", userEmail)
-          .then((response) => {
-            console.log("User added to the database:", response.data);
-          })
-          .catch((error) => {
-            console.error("Error adding user to the database:", error);
-          });
-
         axios
           .post("http://localhost:5000/jwt", userEmail, {
             withCredentials: true,
@@ -72,9 +79,9 @@ const AuthProvider = ({ children }) => {
             console.error("JWT Error:", error);
           });
 
-        axios.get(`http://localhost:5000/users/${user.email}`).then((res) => {
-          setUserRole(res.data.role);
-        });
+          axios.get(`http://localhost:5000/users/${user.email}`).then((res) => {
+            setUserRole(res.data.role);
+          });
       } else {
         // Handle logout
         axios
@@ -106,6 +113,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     signInWithGoogle,
     logOut,
+    fetchUserRole,
   };
 
   return (

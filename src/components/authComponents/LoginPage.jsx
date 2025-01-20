@@ -1,4 +1,3 @@
-
 import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { HiEye, HiEyeOff } from "react-icons/hi";
@@ -7,9 +6,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
 import LoginAnimation from "../animations/LoginAnim";
+import useAxiosSecure from "../../hooks/AxiosSecure";
 
 const LoginPage = () => {
-  const { signIn, setUser, signInWithGoogle } = useContext(AuthContext);
+  const { signIn, setUser, signInWithGoogle, fetchUserRole } =
+    useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -38,12 +40,17 @@ const LoginPage = () => {
   const handleGmailSignIn = async () => {
     try {
       const res = await signInWithGoogle();
-      toast.success("SingIn successful!");
-      setUser(res.user);
-      navigate("/");
+
+      // Add user to the database
+      await axiosSecure.post("/users", {
+        email: res.user.email,
+      });
+       
+      await fetchUserRole(res.user.email);
+      toast.success("SingIn successful!"), setUser(res.user), navigate("/");
     } catch (err) {
       toast.error("Please try again!");
-      console.log("Error during Gmail sign-in:", err);
+      console.error("Error during Gmail sign-in:", err);
     }
   };
 
@@ -110,7 +117,10 @@ const LoginPage = () => {
             {errors.password && (
               <p className="text-sm text-red-500">{errors.password.message}</p>
             )}
-            <Link to={"/forget-password"} className="text-sm text-blue-500 hover:underline">
+            <Link
+              to={"/forget-password"}
+              className="text-sm text-blue-500 hover:underline"
+            >
               Forgot Password?
             </Link>
           </div>
@@ -152,4 +162,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

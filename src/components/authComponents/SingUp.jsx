@@ -7,11 +7,13 @@ import { updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
 import SingUpAnimation from "../animations/SingUpAni";
+import useAxiosSecure from "../../hooks/AxiosSecure";
 
 const SignUp = () => {
-  const { setUser, signInWithGoogle, createUser } = useContext(AuthContext);
+  const { setUser, signInWithGoogle, createUser, fetchUserRole } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const axiosSecure = useAxiosSecure();
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const {
     register,
@@ -34,6 +36,12 @@ const SignUp = () => {
         ...result.user,
         photoURL: data.photoUrl,
       };
+
+      // Add user to the database
+      await axiosSecure.post("/users", {
+        email: result.user.email,
+      });
+       await fetchUserRole(result.user.email);
       toast.success("Registration successful!");
       setUser(updatedUser);
       reset();
@@ -48,17 +56,25 @@ const SignUp = () => {
     }
   };
 
-  const handleGmailSignIn = async () => {
-    try {
-      const res = await signInWithGoogle();
-      toast.success("Registration successful!");
-      setUser(res.user);
-      navigate("/");
-    } catch (err) {
-      toast.error("Please try again!");
-      console.log("Error during Gmail sign-in:", err);
-    }
-  };
+
+const handleGmailSignIn = async () => {
+  try {
+    const res = await signInWithGoogle();
+
+    // Add user to the database
+    await axiosSecure.post("/users", {
+      email: res.user.email,
+    });
+    await fetchUserRole(res.user.email);
+    toast.success("Registration successful!");
+    setUser(res.user);
+    navigate("/");
+  } catch (err) {
+    toast.error("Please try again!");
+    console.error("Error during Gmail sign-in:", err);
+  }
+};
+
 
   const strongPasswordRegex =
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
