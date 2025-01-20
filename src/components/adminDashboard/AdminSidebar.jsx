@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BsPersonFillAdd } from "react-icons/bs";
-import { FaUser, FaRegListAlt, FaBars, FaTimes } from "react-icons/fa";
+import { FaUser, FaBars, FaTimes } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
 import { SiGoogletagmanager } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -40,25 +39,14 @@ const AdminSidebar = () => {
           {isSidebarOpen && <span className="ml-2">Profile</span>}
         </Link>
 
-        {/* My Bookings Button */}
         <Link
-          to={"/dashboard/bookings"}
-          className={`${
-            isSidebarOpen ? "flex" : "flex"
-          } items-center space-x-2 md:space-x-4 text-blue-700 hover:text-blue-500 transition-colors text-sm md:text-base font-medium w-full`}
-        >
-          <FaRegListAlt />
-          {isSidebarOpen && <span className="ml-2">Bookings</span>}
-        </Link>
-
-        <Link
-          to={"/dashboard/manage-stories"}
+          to={"/dashboard/add-packages"}
           className={`${
             isSidebarOpen ? "flex" : "flex"
           } items-center space-x-2 md:space-x-4 text-blue-700 hover:text-blue-500 transition-colors text-sm md:text-base font-medium w-full`}
         >
           <SiGoogletagmanager />
-          {isSidebarOpen && <span className="ml-2">Manage Stories</span>}
+          {isSidebarOpen && <span className="ml-2">Add Packages</span>}
         </Link>
 
         <Link
@@ -69,16 +57,6 @@ const AdminSidebar = () => {
         >
           <IoIosAddCircle />
           {isSidebarOpen && <span className="ml-2">Add Stories</span>}
-        </Link>
-
-        <Link
-          to={"/dashboard/join-as-tour-guide"}
-          className={`${
-            isSidebarOpen ? "flex" : "flex"
-          } items-center space-x-2 md:space-x-4 text-blue-700 hover:text-blue-500 transition-colors text-sm md:text-base font-medium w-full`}
-        >
-          <BsPersonFillAdd />
-          {isSidebarOpen && <span className="ml-2">Join as Tour Guide</span>}
         </Link>
       </div>
     </div>

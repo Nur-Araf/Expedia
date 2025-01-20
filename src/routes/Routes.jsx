@@ -19,6 +19,7 @@ import PaymentPage from "../components/touristDashboard/PaymentPage";
 import GuideRoute from "../components/authComponents/GuideRoute";
 import AssingedBookings from "../components/guideDashboard/AssingedBookings";
 import AdminRoute from "../components/authComponents/AdminRoute";
+import AddPackages from "../components/adminDashboard/AddPackages";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,14 @@ const router = createBrowserRouter([
             element: (
               <AdminRoute>
                 <ManageProfile />
+              </AdminRoute>
+            ),
+          },
+          {
+            path: "add-packages",
+            element: (
+              <AdminRoute>
+                <AddPackages />
               </AdminRoute>
             ),
           },
