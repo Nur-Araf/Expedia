@@ -26,6 +26,8 @@ import TouristRoute from "../components/authComponents/TouristRoute";
 import ManageApplications from "../components/adminDashboard/ManageApplications";
 import AboutUs from "../components/landingPages/AboutUs";
 import Community from "../components/landingPages/Community";
+import AllStories from "../components/landingPages/AllStories";
+import PageNotFound from "../components/landingPages/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Trips />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/stories",
+        element: (
+          <PrivateRoute>
+            <AllStories />
           </PrivateRoute>
         ),
       },
@@ -140,6 +150,7 @@ const router = createBrowserRouter([
               </PrivateRoute>
             ),
           },
+
           {
             path: "assingned-bookings",
             element: (
@@ -223,7 +234,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>404</h1>,
+    element: <PageNotFound />,
   },
 ]);
 

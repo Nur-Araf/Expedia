@@ -149,16 +149,30 @@ const Navbar = () => {
                 >
                   About Us
                 </NavLink>
-                <NavLink
-                  to="/trips"
-                  className={({ isActive }) =>
-                    `text-base font-medium hover:text-gray-400 ${
-                      isActive ? "text-gray-400" : ""
-                    }`
-                  }
-                >
-                  Trips
-                </NavLink>
+                {user && (
+                  <>
+                    <NavLink
+                      to="/trips"
+                      className={({ isActive }) =>
+                        `text-base font-medium hover:text-gray-400 ${
+                          isActive ? "text-gray-400" : ""
+                        }`
+                      }
+                    >
+                      Trips
+                    </NavLink>
+                    <NavLink
+                      to="/stories"
+                      className={({ isActive }) =>
+                        `text-base font-medium hover:text-gray-400 ${
+                          isActive ? "text-gray-400" : ""
+                        }`
+                      }
+                    >
+                      Story
+                    </NavLink>
+                  </>
+                )}
               </div>
               <div className="hidden lg:flex space-x-4">
                 {user ? (
@@ -276,16 +290,30 @@ const Navbar = () => {
           >
             About Us
           </NavLink>
-          <NavLink
-            to="/trips"
-            className={({ isActive }) =>
-              `block text-base font-medium hover:text-blue-800 ${
-                isActive ? "text-blue-800" : ""
-              }`
-            }
-          >
-            Trips
-          </NavLink>
+          {user && (
+            <>
+              <NavLink
+                to="/trips"
+                className={({ isActive }) =>
+                  `block text-base font-medium hover:text-blue-800 ${
+                    isActive ? "text-blue-800" : ""
+                  }`
+                }
+              >
+                Trips
+              </NavLink>
+              <NavLink
+                to="/stories"
+                className={({ isActive }) =>
+                  `block text-base font-medium hover:text-blue-800 ${
+                    isActive ? "text-blue-800" : ""
+                  }`
+                }
+              >
+                Story
+              </NavLink>
+            </>
+          )}
           {user ? (
             <div className="flex items-center ml-2">
               <div className="relative inline-block group">
