@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const TourGuideOverview = () => {
   const steps = [
@@ -81,9 +82,12 @@ const TourGuideOverview = () => {
         </div>
 
         {/* Call to Action */}
-        <button className="mt-10 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg py-2 px-6 rounded-lg shadow-md hover:from-blue-600 hover:to-indigo-700 transition-colors duration-300">
+        <Link
+          to={"/trips"}
+          className="mt-10 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg py-2 px-6 rounded-lg shadow-md hover:from-blue-600 hover:to-indigo-700 transition-colors duration-300"
+        >
           Start Your Journey
-        </button>
+        </Link>
       </div>
     </div>
   );
