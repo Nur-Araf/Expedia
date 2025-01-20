@@ -20,6 +20,7 @@ import GuideRoute from "../components/authComponents/GuideRoute";
 import AssingedBookings from "../components/guideDashboard/AssingedBookings";
 import AdminRoute from "../components/authComponents/AdminRoute";
 import AddPackages from "../components/adminDashboard/AddPackages";
+import Trips from "../components/landingPages/Trips";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         path: "/trips",
         element: (
           <PrivateRoute>
-            <h1>Trips</h1>
+            <Trips />
           </PrivateRoute>
         ),
       },
