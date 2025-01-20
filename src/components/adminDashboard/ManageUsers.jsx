@@ -7,6 +7,8 @@ const ManageUsers = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRole, setSelectedRole] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const roleOptions = [
     { value: "Tourist", label: "Tourist" },
@@ -24,6 +26,19 @@ const ManageUsers = () => {
 
     return matchesSearch && matchesRole;
   });
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
+  const paginatedUsers = filteredUsers.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   return (
     <div className="md:p-4 max-w-[25rem] sm:max-w-[32rem] md:max-w-7xl mx-auto">
@@ -71,8 +86,8 @@ const ManageUsers = () => {
                   Loading...
                 </td>
               </tr>
-            ) : filteredUsers.length > 0 ? (
-              filteredUsers.map((user) => (
+            ) : paginatedUsers.length > 0 ? (
+              paginatedUsers.map((user) => (
                 <tr key={user._id} className="hover:bg-gray-50">
                   <td className="border border-gray-200 px-4 py-2 hidden md:block">
                     {user.name || "N/A"}
@@ -98,6 +113,27 @@ const ManageUsers = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="mt-4 flex justify-center space-x-2">
+          <button
+            className="px-4 py-2 bg-gray-200 rounded-md"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="px-4 py-2 text-lg">{currentPage}</span>
+          <button
+            className="px-4 py-2 bg-gray-200 rounded-md"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

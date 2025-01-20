@@ -16,6 +16,9 @@ const TouristBookings = () => {
   );
   const navigate = useNavigate();
 
+  // Check if the length of allBookings is exactly 3
+  const isThreeBookings = allBookings.length >= 3;
+
   // Map _id to id for uniform access
   const mappedBookings = allBookings.map((booking) => ({
     ...booking,
@@ -139,6 +142,14 @@ const TouristBookings = () => {
       <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
         Bookings
       </h1>
+
+      {/* Display special message if there are exactly 3 bookings */}
+      {isThreeBookings && (
+        <div className="text-center mb-4 text-lg font-semibold text-green-600">
+          You have exactly 3 bookings! Pay for discount.
+        </div>
+      )}
+
       <div className="hidden md:block overflow-x-auto">
         <table
           {...getTableProps()}
@@ -187,6 +198,7 @@ const TouristBookings = () => {
           </tbody>
         </table>
       </div>
+
       {/* Mobile View */}
       <div className="block md:hidden mt-6">
         {mappedBookings.map((booking, index) => (

@@ -19,7 +19,7 @@ const AdminSidebar = () => {
     >
       {/* Sidebar Toggle Button */}
       <button
-        className="text-xl md:text-2xl mb-4 text-blue-500 font-semibold md:font-bold focus:outline-none"
+        className="hidden md:block text-xl md:text-2xl mb-4 text-blue-500 font-semibold md:font-bold focus:outline-none"
         onClick={toggleSidebar}
       >
         {isSidebarOpen ? <FaTimes /> : <FaBars />}{" "}

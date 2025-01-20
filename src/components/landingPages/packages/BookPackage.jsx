@@ -8,6 +8,8 @@ import useFetchData from "../../../hooks/GetData";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosSecure from "../../../hooks/AxiosSecure";
 import Swal from "sweetalert2";
+import Confetti from "react-confetti"; // Import react-confetti
+import { toast } from "react-toastify";
 
 const BookPackage = () => {
   const { id } = useParams();
@@ -16,9 +18,17 @@ const BookPackage = () => {
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, setValue, watch } = useForm();
   const [tourDate, setTourDate] = useState(new Date());
+  const [congratulationsVisible, setCongratulationsVisible] = useState(false); // State to control message visibility
+  const [applyButtonEnabled, setApplyButtonEnabled] = useState(false); // State to control Apply button
+
   const { data: getPackage = [] } = useFetchData(
     ["getPackage"],
     `/api/packages/${id}`
+  );
+
+  const { data: bookings = [], refetch } = useFetchData(
+    ["bookings"],
+    `/api/booking/${user?.email}`
   );
 
   const { data: allGuides = [] } = useFetchData(
@@ -31,7 +41,13 @@ const BookPackage = () => {
     if (getPackage?.price) {
       setValue("price", getPackage.price);
     }
-  }, [getPackage, setValue]);
+
+    // Check if the user has booked 3 or more times
+    if (bookings.length >= 3) {
+      setCongratulationsVisible(true); // Show the message
+      setApplyButtonEnabled(true); // Enable the Apply button
+    }
+  }, [getPackage, bookings, setValue]);
 
   const guideOptions = allGuides.map((guide) => ({
     value: guide.name,
@@ -79,6 +95,7 @@ const BookPackage = () => {
           icon: "info",
           confirmButtonText: "OK",
         }).then(() => {
+          refetch();
           navigation("/dashboard/bookings");
         });
       }
@@ -194,6 +211,33 @@ const BookPackage = () => {
             />
           </div>
 
+          {/* Congratulations Message and Apply Button */}
+          {congratulationsVisible && (
+            <div
+              className="text-center bg-green-100 p-4 rounded-lg shadow-md animate__animated animate__fadeIn animate__delay-1s"
+              style={{ animationDuration: "1s" }}
+            >
+              <h3 className="text-2xl sm:text-xl md:text-2xl font-bold text-green-700">
+                Congratulations!
+              </h3>
+              <p className="text-lg sm:text-base md:text-lg text-green-600">
+                You&apos;ve booked more than 3 tours! Enjoy a discount on your
+                next package.
+              </p>
+              <button
+                onClick={() => toast.success("Discount Applied")}
+                disabled={!applyButtonEnabled}
+                className={`mt-4 px-6 py-2 sm:px-4 sm:py-2 rounded-md text-white ${
+                  applyButtonEnabled
+                    ? "bg-green-600 hover:bg-green-700"
+                    : "bg-gray-400 cursor-not-allowed"
+                } sm:w-full md:w-auto`}
+              >
+                Apply Discount
+              </button>
+            </div>
+          )}
+
           {/* Book Now Button */}
           <div>
             <button
@@ -204,6 +248,17 @@ const BookPackage = () => {
             </button>
           </div>
         </form>
+
+        {/* Confetti Effect */}
+        {congratulationsVisible && (
+          <div className="relative w-full h-full">
+            <Confetti
+              className="absolute top-0 left-0 w-full h-full"
+              width={window.innerWidth} // Use window width to dynamically adjust the confetti width
+              height={window.innerHeight} // Similarly, adjust the height for full-screen confetti effect
+            />
+          </div>
+        )}
       </div>
     </div>
   );
