@@ -4,17 +4,17 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
-const AdminRoute = ({ children }) => {
-  const { loading, user} = useContext(AuthContext);
+const TouristRoute = ({ children }) => {
+  const { loading, user } = useContext(AuthContext);
 
   const userRole = localStorage.getItem("userRole");
 
-   useEffect(() => {
-      // Show a toast if the user is not a admin
-      if (!loading && user && userRole !== "Admin") {
-        toast.error("Access Denied: You are not a Admin");
-      }
-    }, [loading, user, userRole]);
+  useEffect(() => {
+    // Show a toast if the user is not a tourist
+    if (!loading && user && userRole !== "Tourist") {
+      toast.error("Access Denied: You are not a Tourist");
+    }
+  }, [loading, user, userRole]);
 
   if (loading) {
     return (
@@ -24,11 +24,11 @@ const AdminRoute = ({ children }) => {
     );
   }
 
-  if (user && userRole === "Admin") {
+  if (user && userRole === "Tourist") {
     return children;
   }
 
   return <Navigate to="/"></Navigate>;
 };
 
-export default AdminRoute;
+export default TouristRoute;

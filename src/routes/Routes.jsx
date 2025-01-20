@@ -21,6 +21,8 @@ import AssingedBookings from "../components/guideDashboard/AssingedBookings";
 import AdminRoute from "../components/authComponents/AdminRoute";
 import AddPackages from "../components/adminDashboard/AddPackages";
 import Trips from "../components/landingPages/Trips";
+import ManageUsers from "../components/adminDashboard/ManageUsers";
+import TouristRoute from "../components/authComponents/TouristRoute";
 
 const router = createBrowserRouter([
   {
@@ -112,6 +114,14 @@ const router = createBrowserRouter([
             ),
           },
           {
+            path: "manage-users",
+            element: (
+              <AdminRoute>
+                <ManageUsers />
+              </AdminRoute>
+            ),
+          },
+          {
             path: "bookings",
             element: (
               <PrivateRoute>
@@ -178,9 +188,9 @@ const router = createBrowserRouter([
           {
             path: "join-as-tour-guide",
             element: (
-              <PrivateRoute>
+              <TouristRoute>
                 <JoinAsTourGuid />
-              </PrivateRoute>
+              </TouristRoute>
             ),
           },
         ],

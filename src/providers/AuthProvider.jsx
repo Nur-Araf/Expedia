@@ -96,6 +96,7 @@ const AuthProvider = ({ children }) => {
           .then((data) => {
             console.log("Logout:", data.data);
             localStorage.removeItem("accessToken");
+            localStorage.removeItem("userRole");
             setLoading(false);
           })
           .catch((err) => console.log("Logout Error:", err));
