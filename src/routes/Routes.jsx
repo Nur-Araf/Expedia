@@ -24,6 +24,8 @@ import Trips from "../components/landingPages/Trips";
 import ManageUsers from "../components/adminDashboard/ManageUsers";
 import TouristRoute from "../components/authComponents/TouristRoute";
 import ManageApplications from "../components/adminDashboard/ManageApplications";
+import AboutUs from "../components/landingPages/AboutUs";
+import Community from "../components/landingPages/Community";
 
 const router = createBrowserRouter([
   {
@@ -36,11 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <h1>About</h1>,
+        element: <AboutUs />,
       },
       {
         path: "/community",
-        element: <h1>Community</h1>,
+        element: <Community />,
       },
       {
         path: "/trips",
