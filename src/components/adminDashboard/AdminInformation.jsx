@@ -1,13 +1,19 @@
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
+
 import TotalPayments from "./TotalPayments";
+import TotalGuides from "./TotalGuides";
+import TotalPackages from "./TotalPackages";
+import TotalClients from "./TotalClients";
+import TotalStories from "./TotalStories";
 
 
 const AdminInformation = () => {
-  const { user } = useContext(AuthContext);
   return (
     <div>
+      <TotalClients />
+      <TotalStories />
       <TotalPayments />
+      <TotalGuides />
+      <TotalPackages />
     </div>
   );
 };
