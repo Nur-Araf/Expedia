@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaUser, FaBars, FaTimes } from "react-icons/fa";
-import { MdManageAccounts } from "react-icons/md";
+import { MdManageAccounts, MdOutlineSettingsApplications } from "react-icons/md";
 import { SiGoogletagmanager } from "react-icons/si";
 import { Link } from "react-router-dom";
 
@@ -56,6 +56,16 @@ const AdminSidebar = () => {
           } items-center space-x-2 md:space-x-4 text-blue-700 hover:text-blue-500 transition-colors text-sm md:text-base font-medium w-full`}
         >
           <MdManageAccounts />
+          {isSidebarOpen && <span className="ml-2">Manage Users</span>}
+        </Link>
+
+        <Link
+          to={"/dashboard/manage-candidates"}
+          className={`${
+            isSidebarOpen ? "flex" : "flex"
+          } items-center space-x-2 md:space-x-4 text-blue-700 hover:text-blue-500 transition-colors text-sm md:text-base font-medium w-full`}
+        >
+          <MdOutlineSettingsApplications />
           {isSidebarOpen && <span className="ml-2">Manage Users</span>}
         </Link>
       </div>

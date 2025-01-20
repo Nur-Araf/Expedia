@@ -23,6 +23,7 @@ import AddPackages from "../components/adminDashboard/AddPackages";
 import Trips from "../components/landingPages/Trips";
 import ManageUsers from "../components/adminDashboard/ManageUsers";
 import TouristRoute from "../components/authComponents/TouristRoute";
+import ManageApplications from "../components/adminDashboard/ManageApplications";
 
 const router = createBrowserRouter([
   {
@@ -118,6 +119,14 @@ const router = createBrowserRouter([
             element: (
               <AdminRoute>
                 <ManageUsers />
+              </AdminRoute>
+            ),
+          },
+          {
+            path: "manage-candidates",
+            element: (
+              <AdminRoute>
+                <ManageApplications />
               </AdminRoute>
             ),
           },

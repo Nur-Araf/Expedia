@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/AxiosSecure";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const JoinAsTourGuid = () => {
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -11,16 +13,22 @@ const JoinAsTourGuid = () => {
     reset,
   } = useForm();
   const [loading, setLoading] = useState(false);
-   const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      await axiosSecure.post("/api/joinAsTourGuid", data);
+      const newData = {
+        ...data,
+        email: user?.email,
+        name: user?.displayName,
+        isAccepted: false,
+      }
+      await axiosSecure.post("/api/joinAsTourGuid", newData);
       reset();
       Swal.fire({
-        title: "Application Successful!",
-        text: "Your application has been submitted successfully.",
+        title: "Application Successful! Check Role on Profile After Some Time",
+        text: "Your application has been submitted successfully. ",
         icon: "success",
         confirmButtonText: "Okay",
       });
@@ -36,7 +44,6 @@ const JoinAsTourGuid = () => {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="flex justify-center items-center xl:min-h-[86dvh]">
