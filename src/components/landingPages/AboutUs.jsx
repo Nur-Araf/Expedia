@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import MyInformation from "./MyInformation";
 
 const AboutUs = () => {
   return (
@@ -19,6 +20,8 @@ const AboutUs = () => {
           </p>
         </motion.div>
       </section>
+
+      <MyInformation />
 
       {/* Tour Packages Section */}
       <section className="max-w-[25rem] md:max-w-2xl lg:max-w-7xl mx-auto py-16">

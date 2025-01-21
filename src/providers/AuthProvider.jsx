@@ -41,7 +41,9 @@ const AuthProvider = ({ children }) => {
 
   const fetchUserRole = async (email) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users/${email}`);
+      const response = await axios.get(
+        `https://assingment12-backend.vercel.app/users/${email}`
+      );
       localStorage.setItem("userRole", response.data.role);
       setUserRole(response.data.role);
     } catch (err) {
@@ -64,7 +66,7 @@ const AuthProvider = ({ children }) => {
       if (user?.email) {
         const userEmail = { email: user.email };
         axios
-          .post("http://localhost:5000/jwt", userEmail, {
+          .post("https://assingment12-backend.vercel.app/jwt", userEmail, {
             withCredentials: true,
           })
           .then((data) => {
@@ -79,14 +81,16 @@ const AuthProvider = ({ children }) => {
             console.error("JWT Error:", error);
           });
 
-          axios.get(`http://localhost:5000/users/${user.email}`).then((res) => {
+        axios
+          .get(`https://assingment12-backend.vercel.app/users/${user.email}`)
+          .then((res) => {
             setUserRole(res.data.role);
           });
       } else {
         // Handle logout
         axios
           .post(
-            "http://localhost:5000/logout",
+            "https://assingment12-backend.vercel.app/logout",
             {},
             {
               withCredentials: true,

@@ -26,8 +26,9 @@ import TouristRoute from "../components/authComponents/TouristRoute";
 import ManageApplications from "../components/adminDashboard/ManageApplications";
 import AboutUs from "../components/landingPages/AboutUs";
 import Community from "../components/landingPages/Community";
-import AllStories from "../components/landingPages/AllStories";
+//import AllStories from "../components/landingPages/AllStories";
 import PageNotFound from "../components/landingPages/PageNotFound";
+import Guides from "../components/landingPages/Guides";
 
 const router = createBrowserRouter([
   {
@@ -55,13 +56,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/stories",
+        path: "/guides",
         element: (
           <PrivateRoute>
-            <AllStories />
+            <Guides />
           </PrivateRoute>
         ),
       },
+      // {
+      //   path: "/stories",
+      //   element: (
+      //     <PrivateRoute>
+      //       <AllStories />
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "/packages/:id",
         element: <TourPackagesDetails />,

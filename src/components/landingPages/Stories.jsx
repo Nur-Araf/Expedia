@@ -74,7 +74,7 @@ const Stories = () => {
                   <FacebookIcon size={32} round />
                 </FacebookShareButton>
                 <Link
-                  to="/stories"
+                  to="/community"
                   className="text-blue-700 text-sm hover:underline"
                 >
                   Read More
@@ -86,7 +86,7 @@ const Stories = () => {
       </motion.div>
       <div className="text-center py-6 md:py-12">
         <Link
-          to="/stories"
+          to="/community"
           className="bg-gradient-to-r from-blue-500 to-indigo-900 text-white px-6 py-2 rounded-md shadow-lg hover:bg-blue-600"
         >
           All Stories

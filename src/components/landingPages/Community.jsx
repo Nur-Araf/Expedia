@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import AllStories from "./AllStories";
 
 const Community = () => {
   return (
@@ -20,6 +21,8 @@ const Community = () => {
           </p>
         </motion.div>
       </section>
+
+      <AllStories />
 
       {/* Community Benefits Section */}
       <section className="max-w-[25rem] md:max-w-2xl lg:max-w-7xl mx-auto py-16">

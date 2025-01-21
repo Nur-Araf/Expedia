@@ -2,13 +2,15 @@ import { useParams } from "react-router-dom";
 import useFetchData from "../../../hooks/GetData";
 import { Card, Avatar, List, Rate } from "antd";
 import "antd/dist/reset.css";
+import GuideStories from "../GuideStories";
 
 const GuideProfile = () => {
   const { id } = useParams();
   const { data: guideProfile = {} } = useFetchData(
     ["guideProfile"],
-    `/api/tour-guides/${id}`
+    `/tour-guides/${id}`
   );
+  const email = guideProfile.email;
 
   return (
     <div className="my-6 md:my-12">
@@ -100,6 +102,7 @@ const GuideProfile = () => {
           />
         </div>
       </div>
+      <GuideStories email={email} />
     </div>
   );
 };

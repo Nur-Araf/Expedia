@@ -161,7 +161,7 @@ const Navbar = () => {
                     >
                       Trips
                     </NavLink>
-                    <NavLink
+                    {/* <NavLink
                       to="/stories"
                       className={({ isActive }) =>
                         `text-base font-medium hover:text-gray-400 ${
@@ -170,6 +170,16 @@ const Navbar = () => {
                       }
                     >
                       Story
+                    </NavLink> */}
+                    <NavLink
+                      to="/guides"
+                      className={({ isActive }) =>
+                        `text-base font-medium hover:text-gray-400 ${
+                          isActive ? "text-gray-400" : ""
+                        }`
+                      }
+                    >
+                      Guides
                     </NavLink>
                   </>
                 )}
@@ -302,7 +312,7 @@ const Navbar = () => {
               >
                 Trips
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/stories"
                 className={({ isActive }) =>
                   `block text-base font-medium hover:text-blue-800 ${
@@ -311,6 +321,16 @@ const Navbar = () => {
                 }
               >
                 Story
+              </NavLink> */}
+              <NavLink
+                to="/guides"
+                className={({ isActive }) =>
+                  `block text-base font-medium hover:text-blue-800 ${
+                    isActive ? "text-blue-800" : ""
+                  }`
+                }
+              >
+                Guides
               </NavLink>
             </>
           )}

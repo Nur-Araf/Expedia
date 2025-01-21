@@ -17,6 +17,7 @@ const Stories = () => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useNavigate();
+  const userRole = localStorage.getItem("userRole");
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -37,6 +38,7 @@ const Stories = () => {
         title: data.title,
         story: data.story,
         image: imageUrl,
+        storyPost: userRole,
       };
       try {
         axiosScure.post("/stories", storyData).then((res) => {
