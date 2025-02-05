@@ -7,7 +7,7 @@ Welcome to **Expedia**! This platform is designed to make exploring Bangladesh e
 Visit our live site here: [Expedia](https://tourist-management-ff48a.web.app/)
 
 <div align="center">
-  <img height="300" src="https://i.ibb.co.com/xr6bzxN/Black-and-Red-Simple-Tips-How-To-Be-A-Programmer-Youtube-Thumbnail.png"  />
+  <img height="300" src="https://github.com/user-attachments/assets/81b0b883-3fdd-4090-9c32-1a9ba2bd5002"  />
 </div>
 
 ## Key Features
@@ -17,3 +17,49 @@ Visit our live site here: [Expedia](https://tourist-management-ff48a.web.app/)
 - **Become a Guide**: Application process for users who want to join as tour guides
 - **Payment Management**: Secure online payment gateway integration with Stripe.
 - **Tour Bangladesh**: Highlighting the unique attractions of Bangladesh.
+
+## Tech Stack
+
+React, React-Router-Dom, TailwindCSS, GSAP, Stripe, Axios
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Nur-Araf/Expedia.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd expedia
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+    or
+    ```bash
+    yarn install
+    ```
+
+### Usage
+
+1. Start the development server:
+    ```bash
+    npm start
+    ```
+    or
+    ```bash
+    yarn start
+    ```
+2. Open your browser and navigate to `http://localhost:3000`.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
