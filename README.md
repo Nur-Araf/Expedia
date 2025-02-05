@@ -6,40 +6,14 @@ Welcome to **Expedia**! This platform is designed to make exploring Bangladesh e
 
 Visit our live site here: [Expedia](https://tourist-management-ff48a.web.app/)
 
+<div align="center">
+  <img height="300" src="https://i.ibb.co.com/xr6bzxN/Black-and-Red-Simple-Tips-How-To-Be-A-Programmer-Youtube-Thumbnail.png"  />
+</div>
+
 ## Key Features
 
 - **Tour Packages**: Browse a wide variety of tour packages tailored to different interests and budgets.
-- ** Guide Selection**: Choose from a list of professional, verified guides.
+- **Guide Selection**: Choose from a list of professional, verified guides.
 - **Become a Guide**: Application process for users who want to join as tour guides
 - **Payment Management**: Secure online payment gateway integration with Stripe.
 - **Tour Bangladesh**: Highlighting the unique attractions of Bangladesh.
-
-## Used npm Packages
-
-The following npm packages are used in this project:
-
-- `@headlessui/react`
-- `@radix-ui/react-navigation-menu`
-- `axios`
-- `tanstack/react-query`
-- `stripe`
-- `class-variance-authority`
-- `clsx`
-- `date-fns`
-- `firebase`
-- `framer-motion`
-- `gsap`
-- `lottie-web`
-- `lucide-react`
-- `react`
-- `react-datepicker`
-- `react-hook-form`
-- `react-icons`
-- `react-rating-stars-component`
-- `react-router-dom`
-- `react-vertical-timeline-component`
-- `react-select`
-- `react-toastify`
-- `sweetalert2`
-- `swiper`
-- `tailwindcss-animate`

@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Trips = () => {
-  const {
-    data: packages = [],
-    isLoading,
-  } = useFetchData(["packages"], "/api/packages", {
-    refetchOnWindowFocus: true,
-  });
+  const { data: packages = [], isLoading } = useFetchData(
+    ["packages"],
+    "/api/packages",
+    {
+      refetchOnWindowFocus: true,
+    }
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6; // Number of items per page
 
