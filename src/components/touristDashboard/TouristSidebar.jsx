@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const TouristSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Function to toggle sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

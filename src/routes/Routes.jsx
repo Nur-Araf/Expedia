@@ -96,138 +96,6 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        ),
-        children: [
-          {
-            path: "profile",
-            element: (
-              <PrivateRoute>
-                <ManageProfile />
-              </PrivateRoute>
-            ),
-          },
-          {
-            path: "guide-profile",
-            element: (
-              <GuideRoute>
-                <ManageProfile />
-              </GuideRoute>
-            ),
-          },
-          {
-            path: "admin-profile",
-            element: (
-              <AdminRoute>
-                <ManageProfile />
-              </AdminRoute>
-            ),
-          },
-          {
-            path: "add-packages",
-            element: (
-              <AdminRoute>
-                <AddPackages />
-              </AdminRoute>
-            ),
-          },
-          {
-            path: "manage-users",
-            element: (
-              <AdminRoute>
-                <ManageUsers />
-              </AdminRoute>
-            ),
-          },
-          {
-            path: "manage-candidates",
-            element: (
-              <AdminRoute>
-                <ManageApplications />
-              </AdminRoute>
-            ),
-          },
-          {
-            path: "bookings",
-            element: (
-              <PrivateRoute>
-                <TouristBookings />
-              </PrivateRoute>
-            ),
-          },
-
-          {
-            path: "assingned-bookings",
-            element: (
-              <GuideRoute>
-                <AssingedBookings />
-              </GuideRoute>
-            ),
-          },
-          {
-            path: "manage-stories",
-            element: (
-              <PrivateRoute>
-                <ManageStories />
-              </PrivateRoute>
-            ),
-          },
-          {
-            path: "manageGuide-stories",
-            element: (
-              <GuideRoute>
-                <ManageStories />
-              </GuideRoute>
-            ),
-          },
-          {
-            path: "update-story/:id",
-            element: (
-              <PrivateRoute>
-                <UpdateStory />
-              </PrivateRoute>
-            ),
-          },
-          {
-            path: "updateGuide-story/:id",
-            element: (
-              <GuideRoute>
-                <UpdateStory />
-              </GuideRoute>
-            ),
-          },
-          {
-            path: "add-stories",
-            element: (
-              <PrivateRoute>
-                <Stories />
-              </PrivateRoute>
-            ),
-          },
-          {
-            path: "addGuide-stories",
-            element: (
-              <GuideRoute>
-                <Stories />
-              </GuideRoute>
-            ),
-          },
-          {
-            path: "join-as-tour-guide",
-            element: (
-              <TouristRoute>
-                <JoinAsTourGuid />
-              </TouristRoute>
-            ),
-          },
-        ],
-      },
-
-      {
         path: "/log-in",
         element: <LoginPage />,
       },
@@ -238,6 +106,137 @@ const router = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPassword />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <ManageProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "guide-profile",
+        element: (
+          <GuideRoute>
+            <ManageProfile />
+          </GuideRoute>
+        ),
+      },
+      {
+        path: "admin-profile",
+        element: (
+          <AdminRoute>
+            <ManageProfile />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "add-packages",
+        element: (
+          <AdminRoute>
+            <AddPackages />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-candidates",
+        element: (
+          <AdminRoute>
+            <ManageApplications />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "bookings",
+        element: (
+          <PrivateRoute>
+            <TouristBookings />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "assingned-bookings",
+        element: (
+          <GuideRoute>
+            <AssingedBookings />
+          </GuideRoute>
+        ),
+      },
+      {
+        path: "manage-stories",
+        element: (
+          <PrivateRoute>
+            <ManageStories />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manageGuide-stories",
+        element: (
+          <GuideRoute>
+            <ManageStories />
+          </GuideRoute>
+        ),
+      },
+      {
+        path: "update-story/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateStory />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "updateGuide-story/:id",
+        element: (
+          <GuideRoute>
+            <UpdateStory />
+          </GuideRoute>
+        ),
+      },
+      {
+        path: "add-stories",
+        element: (
+          <PrivateRoute>
+            <Stories />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "addGuide-stories",
+        element: (
+          <GuideRoute>
+            <Stories />
+          </GuideRoute>
+        ),
+      },
+      {
+        path: "join-as-tour-guide",
+        element: (
+          <TouristRoute>
+            <JoinAsTourGuid />
+          </TouristRoute>
+        ),
       },
     ],
   },
