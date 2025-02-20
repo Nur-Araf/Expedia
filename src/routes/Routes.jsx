@@ -29,6 +29,7 @@ import Community from "../components/landingPages/Community";
 //import AllStories from "../components/landingPages/AllStories";
 import PageNotFound from "../components/landingPages/PageNotFound";
 import Guides from "../components/landingPages/Guides";
+import TotalRevenue from "../components/adminDashboard/TotalRevenue";
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ManageProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "revenue",
+        element: (
+          <PrivateRoute>
+            <TotalRevenue />
           </PrivateRoute>
         ),
       },

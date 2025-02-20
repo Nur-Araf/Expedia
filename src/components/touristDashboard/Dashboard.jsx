@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useContext } from "react";
-import { FaRegListAlt, FaUser } from "react-icons/fa";
+import { FaMoneyCheckAlt, FaRegListAlt, FaUser } from "react-icons/fa";
 import { SiGoogletagmanager } from "react-icons/si";
 import {
   MdManageAccounts,
@@ -67,6 +67,11 @@ const Dashboard = () => {
       name: "Profile",
       icon: <FaUser />,
       link: "/dashboard/admin-profile",
+    },
+    {
+      name: "Revenue",
+      icon: <FaMoneyCheckAlt />,
+      link: "/dashboard/revenue",
     },
     {
       name: "Add Packages",
