@@ -6,6 +6,7 @@ import useAxiosSecure from "../../hooks/AxiosSecure";
 import Swal from "sweetalert2";
 import { useTable } from "react-table";
 import PropTypes from "prop-types";
+import Breadcrumb from "../shareComponents/Breadcrumb";
 
 const AssignedBookings = () => {
   const { user } = useContext(AuthContext);
@@ -149,137 +150,154 @@ const AssignedBookings = () => {
   };
 
   return (
-    <div className="p-4 lg:p-6 bg-[#F4E3CF] rounded-lg min-h-screen">
-      <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
-        Assigned Tours
-      </h1>
+    <div>
+      <Breadcrumb pageName="Assigned Tours" />
+      <div className="p-4 lg:p-6 bg-[#F4E3CF] rounded-lg m-4 min-h-[85dvh]">
+        <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
+          Assigned Tours
+        </h1>
 
-      {myBookings.length === 0 ? (
-        <div className="flex flex-col items-center justify-center h-full space-y-4">
-          <p className="text-blue-500 text-lg font-semibold">
-            No Bookings Found. Please Wait..
-          </p>
-        </div>
-      ) : (
-        <>
-          {/* Desktop View */}
-          <div className="hidden md:block overflow-x-auto">
-            <table
-              {...getTableProps()}
-              className="table-auto w-full bg-white shadow-lg rounded-lg border-collapse border border-gray-300"
-            >
-              <thead>
-                {headerGroups.map((headerGroup, index) => (
-                  <tr
-                    key={`header-${index}`}
-                    {...headerGroup.getHeaderGroupProps()}
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
-                  >
-                    {headerGroup.headers.map((column) => (
-                      <th
-                        key={column.id}
-                        {...column.getHeaderProps()}
-                        className="text-left px-4 py-3 text-sm font-medium uppercase tracking-wide"
-                      >
-                        {column.render("Header")}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
-                  prepareRow(row);
-                  return (
+        {myBookings.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-full space-y-4">
+            <p className="text-blue-500 text-lg font-semibold">
+              No Bookings Found. Please Wait..
+            </p>
+          </div>
+        ) : (
+          <>
+            {/* Desktop View */}
+            <div className="hidden md:block overflow-x-auto">
+              <table
+                {...getTableProps()}
+                className="table-auto w-full bg-white shadow-lg rounded-lg border-collapse border border-gray-300"
+              >
+                <thead>
+                  {headerGroups.map((headerGroup, index) => (
                     <tr
-                      key={`row-${row.id}`}
-                      {...row.getRowProps()}
-                      className="hover:bg-gray-100 border-b border-gray-300"
+                      key={`header-${index}`}
+                      {...headerGroup.getHeaderGroupProps()}
+                      className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
                     >
-                      {row.cells.map((cell) => (
-                        <td
-                          key={`cell-${cell.column.id}-${row.id}`}
-                          {...cell.getCellProps()}
-                          className="py-1 px-[2px] lg:px-4 lg:py-2 text-gray-700 text-sm"
+                      {headerGroup.headers.map((column) => (
+                        <th
+                          key={column.id}
+                          {...column.getHeaderProps()}
+                          className="text-left px-4 py-3 text-sm font-medium uppercase tracking-wide"
                         >
-                          {cell.render("Cell")}
-                        </td>
+                          {column.render("Header")}
+                        </th>
                       ))}
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                  ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                  {rows.map((row) => {
+                    prepareRow(row);
+                    return (
+                      <tr
+                        key={`row-${row.id}`}
+                        {...row.getRowProps()}
+                        className="hover:bg-gray-100 border-b border-gray-300"
+                      >
+                        {row.cells.map((cell) => (
+                          <td
+                            key={`cell-${cell.column.id}-${row.id}`}
+                            {...cell.getCellProps()}
+                            className="py-1 px-[2px] lg:px-4 lg:py-2 text-gray-700 text-sm"
+                          >
+                            {cell.render("Cell")}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
 
-          {/* Mobile View */}
-          <div className="block md:hidden mt-6">
-            {mappedBookings.map((booking, index) => (
-              <div
-                key={index}
-                className="mb-4 p-4 bg-white rounded-lg shadow border border-gray-300"
-              >
-                <p className="text-lg font-semibold text-gray-800">
-                  Package: {booking.placeId}
-                </p>
-                <p className="text-sm text-gray-600">
-                  Tour Guide: {booking.tourGuide}
-                </p>
-                <p className="text-sm text-gray-600">
-                  Date: {new Date(booking.tourDate).toISOString().split("T")[0]}
-                </p>
-                <p className="text-sm text-gray-600">Price: €{booking.price}</p>
-                <p className="text-sm text-gray-600">
-                  Status:{" "}
-                  <span
-                    className={`font-semibold ${
-                      booking.isPending ? "text-yellow-600" : booking.isPending === "In-Review" ? "text-green-600" : "text-blue-600"
-                    }`}
-                  >
-                    {booking.isPending === "Pending" ? "Pending" : booking.isPending === "In-Review" ? "In-Review" : "Accepted"}
-                  </span>
-                </p>
-                {booking.isPending === "Pending" ? (
-                  <div className="flex gap-2 mt-3">
+            {/* Mobile View */}
+            <div className="block md:hidden mt-6">
+              {mappedBookings.map((booking, index) => (
+                <div
+                  key={index}
+                  className="mb-4 p-4 bg-white rounded-lg shadow border border-gray-300"
+                >
+                  <p className="text-lg font-semibold text-gray-800">
+                    Package: {booking.placeId}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Tour Guide: {booking.tourGuide}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Date:{" "}
+                    {new Date(booking.tourDate).toISOString().split("T")[0]}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Price: €{booking.price}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Status:{" "}
+                    <span
+                      className={`font-semibold ${
+                        booking.isPending
+                          ? "text-yellow-600"
+                          : booking.isPending === "In-Review"
+                          ? "text-green-600"
+                          : "text-blue-600"
+                      }`}
+                    >
+                      {booking.isPending === "Pending"
+                        ? "Pending"
+                        : booking.isPending === "In-Review"
+                        ? "In-Review"
+                        : "Accepted"}
+                    </span>
+                  </p>
+                  {booking.isPending === "Pending" ? (
+                    <div className="flex gap-2 mt-3">
+                      <button
+                        className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full"
+                        onClick={() => navigate(`/payment/${booking.id}`)}
+                        disabled
+                      >
+                        Accept
+                      </button>
+                      <button
+                        className="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 w-full"
+                        onClick={() => handleCancel(booking.id)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : booking.isPending === "In-Review" ? (
+                    <div className="flex gap-2 mt-3">
+                      <button
+                        className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full"
+                        onClick={() => navigate(`/payment/${booking.id}`)}
+                      >
+                        Accept
+                      </button>
+                      <button
+                        className="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 w-full"
+                        onClick={() => handleCancel(booking.id)}
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  ) : (
                     <button
                       className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full"
-                      onClick={() => navigate(`/payment/${booking.id}`)}
                       disabled
                     >
-                      Accept
+                      Confirmed
                     </button>
-                    <button
-                      className="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 w-full"
-                      onClick={() => handleCancel(booking.id)}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                ) : booking.isPending === "In-Review" ? (
-                    <div className="flex gap-2 mt-3">
-                    <button
-                      className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full"
-                      onClick={() => navigate(`/payment/${booking.id}`)}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      className="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 w-full"
-                      onClick={() => handleCancel(booking.id)}
-                    >
-                      Reject
-                    </button>
-                  </div>
-                ) : (
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-600 w-full" disabled>
-                    Confirmed
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
+                  )}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

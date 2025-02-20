@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/AxiosSecure";
 import useFetchData from "../../hooks/GetData";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Breadcrumb from "../shareComponents/Breadcrumb";
 
 const UpdateStory = () => {
   const { id } = useParams();
@@ -107,84 +108,87 @@ const UpdateStory = () => {
   if (error) return <p>Error fetching story: {error.message}</p>;
 
   return (
-    <div className="flex justify-center items-center xl:min-h-[86dvh]">
-      <div className="p-4 md:p-6 bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200 w-full max-w-2xl">
-        <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-500 text-center mb-4">
-          Update Story
-        </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="mb-4">
-            <label
-              className="block text-blue-500 text-base md:text-lg font-medium"
-              htmlFor="title"
-            >
-              Title
-            </label>
-            <input
-              id="title"
-              {...register("title", { required: "Title is required" })}
-              type="text"
-              className="w-full text-gray-700 px-4 py-2 border rounded focus:outline-none focus:ring focus:border-blue-500"
-              placeholder="Enter story title"
-            />
-            {errors.title && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.title.message}
-              </p>
-            )}
-          </div>
-
-          <div className="mb-4">
-            <label
-              className="block text-blue-500 text-base md:text-lg font-medium"
-              htmlFor="story"
-            >
-              Story
-            </label>
-            <textarea
-              id="story"
-              {...register("story", { required: "Story is required" })}
-              className="w-full px-4 py-2 border text-gray-700 rounded focus:outline-none focus:ring focus:border-blue-500"
-              placeholder="Enter story content"
-              rows="5"
-            ></textarea>
-            {errors.story && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.story.message}
-              </p>
-            )}
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-blue-500 text-base md:text-lg font-medium">
-              Image
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              {...register("image")}
-              className="mt-1 w-full border border-gray-300 bg-white rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          <div className="flex justify-end gap-4">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full bg-blue-500 text-white py-2 px-4 rounded-lg text-base font-medium md:text-lg hover:bg-blue-600 transition-colors ${
-                isSubmitting
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-600"
-              }`}
-            >
-              {isSubmitting ? (
-                <span className="loading loading-spinner loading-sm"></span>
-              ) : (
-                "Update Story"
+    <div>
+      <Breadcrumb pageName="Update Story"/>
+      <div className="flex justify-center items-center xl:min-h-[86dvh]">
+        <div className="p-4 md:p-6 bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200 w-full max-w-2xl">
+          <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-500 text-center mb-4">
+            Update Story
+          </h1>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="mb-4">
+              <label
+                className="block text-blue-500 text-base md:text-lg font-medium"
+                htmlFor="title"
+              >
+                Title
+              </label>
+              <input
+                id="title"
+                {...register("title", { required: "Title is required" })}
+                type="text"
+                className="w-full text-gray-700 px-4 py-2 border rounded focus:outline-none focus:ring focus:border-blue-500"
+                placeholder="Enter story title"
+              />
+              {errors.title && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.title.message}
+                </p>
               )}
-            </button>
-          </div>
-        </form>
+            </div>
+
+            <div className="mb-4">
+              <label
+                className="block text-blue-500 text-base md:text-lg font-medium"
+                htmlFor="story"
+              >
+                Story
+              </label>
+              <textarea
+                id="story"
+                {...register("story", { required: "Story is required" })}
+                className="w-full px-4 py-2 border text-gray-700 rounded focus:outline-none focus:ring focus:border-blue-500"
+                placeholder="Enter story content"
+                rows="5"
+              ></textarea>
+              {errors.story && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.story.message}
+                </p>
+              )}
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-blue-500 text-base md:text-lg font-medium">
+                Image
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                {...register("image")}
+                className="mt-1 w-full border border-gray-300 bg-white rounded-lg p-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            <div className="flex justify-end gap-4">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full bg-blue-500 text-white py-2 px-4 rounded-lg text-base font-medium md:text-lg hover:bg-blue-600 transition-colors ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-500 hover:bg-blue-600"
+                }`}
+              >
+                {isSubmitting ? (
+                  <span className="loading loading-spinner loading-sm"></span>
+                ) : (
+                  "Update Story"
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

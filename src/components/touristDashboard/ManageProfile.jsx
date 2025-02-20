@@ -4,6 +4,7 @@ import { updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../../firebase.init";
 import AdminInformation from "../adminDashboard/AdminInformation";
+import Breadcrumb from "../shareComponents/Breadcrumb";
 
 const ManageProfile = () => {
   const { user, userRole } = useContext(AuthContext);
@@ -44,7 +45,8 @@ const ManageProfile = () => {
 
   return (
     <div className="lg:min-h-[80dvh]">
-      <div className="p-4 sm:p-6 max-w-md sm:max-w-lg mx-auto bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200">
+      <Breadcrumb pageName="Manage Profile"/>
+      <div className="p-4 sm:p-6 bg-[#F4E3CF] shadow-lg rounded-lg border border-gray-200 m-4">
         <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-500 text-center">
           Welcome, {user.displayName}!
         </h1>

@@ -28,7 +28,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  width: drawerWidth,
+  width: open ? drawerWidth : 60, // Adjust width when closed
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
@@ -37,7 +37,7 @@ const Drawer = styled(MuiDrawer, {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     color: "#263238",
-    width: open ? drawerWidth : `calc(${theme.spacing(7)} + 1px)`,
+    width: open ? drawerWidth : 60, // Set width dynamically
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -62,7 +62,10 @@ export default function MasterSidebar({ items }) {
 
   return (
     <Box sx={{ display: "flex", overflow: "hidden" }}>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+      >
         <DrawerHeader>
           {open ? (
             <div className="flex items-center justify-center">

@@ -1,6 +1,7 @@
 import useFetchData from "../../hooks/GetData";
 import useAxiosSecure from "../../hooks/AxiosSecure";
 import { toast } from "react-toastify";
+import Breadcrumb from "../shareComponents/Breadcrumb";
 
 const ManageApplications = () => {
   const { data: applications = [], refetch } = useFetchData(
@@ -42,47 +43,52 @@ const ManageApplications = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6 text-center">
-        Manage Applications
-      </h1>
-      <div className="overflow-x-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {applications.map((app) => (
-            <div
-              key={app._id}
-              className="bg-[#F4E3CF] p-4 border rounded-lg shadow-lg"
-            >
-              <h2 className="text-xl font-semibold mb-2">{app.name}</h2>
-              <p className="text-sm text-gray-500 mb-1">Email: {app.email}</p>
-              <p className="text-sm text-gray-500 mb-1">Title: {app.title}</p>
-              <p className="text-sm text-gray-500 mb-1">Reason: {app.reason}</p>
-              <div className="mb-4">
-                <a
-                  href={app.cvLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
-                >
-                  View CV
-                </a>
+    <div>
+      <Breadcrumb pageName="Manage Applications"/>
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-6 text-center">
+          Manage Applications
+        </h1>
+        <div className="overflow-x-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {applications.map((app) => (
+              <div
+                key={app._id}
+                className="bg-[#F4E3CF] p-4 border rounded-lg shadow-lg"
+              >
+                <h2 className="text-xl font-semibold mb-2">{app.name}</h2>
+                <p className="text-sm text-gray-500 mb-1">Email: {app.email}</p>
+                <p className="text-sm text-gray-500 mb-1">Title: {app.title}</p>
+                <p className="text-sm text-gray-500 mb-1">
+                  Reason: {app.reason}
+                </p>
+                <div className="mb-4">
+                  <a
+                    href={app.cvLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    View CV
+                  </a>
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={() => handleAccept(app._id, app.email)}
+                    className="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
+                  >
+                    Accept
+                  </button>
+                  <button
+                    onClick={() => handleReject(app._id)}
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
+                  >
+                    Reject
+                  </button>
+                </div>
               </div>
-              <div className="flex space-x-3">
-                <button
-                  onClick={() => handleAccept(app._id, app.email)}
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
-                >
-                  Accept
-                </button>
-                <button
-                  onClick={() => handleReject(app._id)}
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
-                >
-                  Reject
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

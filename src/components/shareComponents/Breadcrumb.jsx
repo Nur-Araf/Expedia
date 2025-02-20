@@ -1,9 +1,11 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 
-const Breadcrumb = (pageName ) => {
+
+const Breadcrumb = ({ pageName }) => {
   return (
     <div className="mb-6 p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between bg-gradient-to-l from-[#5c6bc0] to-[#cfd8dc]">
-      <h2 className="text-2xl font-semibold text-black">{pageName}</h2>
+      <h2 className="text-2xl font-semibold text-black m-0">{pageName}</h2>
 
       <nav>
         <ol className="flex items-center gap-2">
@@ -12,10 +14,15 @@ const Breadcrumb = (pageName ) => {
               Dashboard /
             </Link>
           </li>
-          <li className="font-medium text-primary">{pageName}</li>
+          <li className="font-medium text-primary m-0">{pageName}</li>
         </ol>
       </nav>
     </div>
   );
 };
 export default Breadcrumb;
+
+
+Breadcrumb.propTypes = {
+  pageName: PropTypes.string,
+};
