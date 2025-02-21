@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import DarkModeSwitcher from "../animations/DarkModeSwitcher";
 
 const Navbar = () => {
   const { user, logOut, userRole } = useContext(AuthContext);
@@ -28,8 +29,8 @@ const Navbar = () => {
   };
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-    if (window.innerWidth >= 768) {
+    setIsMobile(window.innerWidth < 1021);
+    if (window.innerWidth >= 1021) {
       setIsOpen(false);
       document.body.classList.remove("no-scroll");
     }
@@ -78,7 +79,7 @@ const Navbar = () => {
           {isMobile && (
             <button
               onClick={toggleMenu}
-              className="focus:outline-none md:hidden"
+              className="focus:outline-none lg:hidden"
               aria-label="Toggle navigation"
             >
               {isOpen ? (
@@ -118,7 +119,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           {!isMobile && (
             <>
-              <div className="hidden md:flex space-x-6">
+              <div className="hidden lg:flex space-x-6">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
@@ -186,7 +187,8 @@ const Navbar = () => {
               </div>
               <div className="hidden lg:flex space-x-4">
                 {user ? (
-                  <>
+                  <div className="flex items-center gap-4">
+                    <DarkModeSwitcher />
                     <div
                       className="relative inline-block"
                       onMouseEnter={() => setIsToggleOpen(true)}
@@ -244,7 +246,7 @@ const Navbar = () => {
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <>
                     <NavLink
@@ -269,7 +271,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && isMobile && (
-        <div className="md:hidden h-screen bg-[url('/Travel.jpg')] bg-cover text-blue-500 space-y-4 px-4 pb-4 pt-4">
+        <div className="lg:hidden h-screen bg-[url('/Travel.jpg')] bg-cover text-blue-500 space-y-4 px-4 pb-4 pt-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -335,7 +337,8 @@ const Navbar = () => {
             </>
           )}
           {user ? (
-            <div className="flex items-center ml-2">
+            <div className="flex items-center ml-2 gap-4">
+              <DarkModeSwitcher />
               <div className="relative inline-block group">
                 <img
                   src={user?.photoURL}
