@@ -4,10 +4,17 @@ import gsap from "gsap";
 
 const DarkModeSwitcher = () => {
   const { theme, toggleTheme } = darkMode();
-  console.log(theme)
   const switchRef = useRef(null);
   const sunRef = useRef(null);
   const moonRef = useRef(null);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   useEffect(() => {
     if (theme === "dark") {
