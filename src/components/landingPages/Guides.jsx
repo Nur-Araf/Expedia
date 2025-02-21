@@ -12,7 +12,7 @@ const Guides = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6 md:py-12">
+    <div className="min-h-screen bg-gray-100 dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800 py-6 md:py-12">
       <h1 className="text-3xl md:text-4xl font-bold text-center mb-5 md:mb-10 text-blue-700">
         Meet Our Expert Guides
       </h1>

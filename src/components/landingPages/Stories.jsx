@@ -35,7 +35,7 @@ const Stories = () => {
   };
 
   return (
-    <div className="p-6 space-y-8 min-h-[95dvh]">
+    <div className="p-6 space-y-8 min-h-[95dvh] dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800">
       <h1 className="mt-6 md:mt-10 lg:mt-16 text-3xl font-bold text-center text-blue-600">
         Stories by Customers
       </h1>

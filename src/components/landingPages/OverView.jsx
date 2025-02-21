@@ -68,13 +68,13 @@ const TourGuideOverview = () => {
                 duration: 0.6,
                 ease: "easeOut",
               }}
-              className="bg-white bg-opacity-80 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+              className="bg-white dark:bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 cursor-pointer"
             >
               <div className="text-3xl sm:text-4xl">{step.icon}</div>
               <h2 className="text-lg sm:text-xl font-semibold text-blue-600 mt-3">
                 {step.title}
               </h2>
-              <p className="text-sm sm:text-base text-gray-600 mt-2">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-white mt-2">
                 {step.description}
               </p>
             </motion.div>

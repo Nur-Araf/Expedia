@@ -45,7 +45,7 @@ const Reviews = () => {
   const isInView = useInView(ref, { threshold: 0.5 });
 
   return (
-    <section className="py-16 min-h-[90dvh] flex items-center bg-gray-100">
+    <section className="py-16 min-h-[90dvh] flex items-center bg-gray-100 dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800">
       <div className="max-w-[25rem] md:max-w-2xl lg:max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-blue-800 mb-8">
           What Our Customers Say

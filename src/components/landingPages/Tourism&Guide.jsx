@@ -6,7 +6,7 @@ import TourGuide from "./packages/TourGuide";
 
 const TourismAndGuide = () => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center -mt-2 items-center dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800">
       <div className="max-w-7xl mx-auto my-6 md:my-16 px-6 sm:px-2 md:px-6 lg:px-8 py-6 lg:py-12 bg-[#F4E3CF] rounded-lg shadow-lg">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 text-blue-500">
           Explore Our Tourism Services

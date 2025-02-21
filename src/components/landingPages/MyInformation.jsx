@@ -21,9 +21,11 @@ const MyInformation = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center mt-4 md:mt-12 p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-4xl font-bold text-blue-600 mb-6">Nur Araf Shishir</h1>
-      <p className="text-lg text-gray-700 mb-8 text-center">
+    <div className="flex flex-col items-center mt-4 md:mt-12 p-6 bg-gray-100 dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800 min-h-screen">
+      <h1 className="text-4xl font-bold text-blue-600 mb-6">
+        Nur Araf Shishir
+      </h1>
+      <p className="text-lg text-gray-700 dark:text-white mb-8 text-center">
         A passionate MERN stack developer who loves creating web applications.
       </p>
 

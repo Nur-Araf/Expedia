@@ -66,11 +66,11 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="p-4 bg-white shadow-md rounded-lg transition-all duration-300 hover:shadow-lg"
+              className="p-4 bg-white dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800 shadow-md rounded-lg transition-all duration-300 hover:shadow-lg"
             >
               <button
                 onClick={() => toggleAnswer(index)}
-                className="w-full text-left text-lg font-semibold text-gray-800"
+                className="w-full text-left text-lg font-semibold text-gray-800 dark:text-white"
               >
                 {faq.question}
               </button>
@@ -78,7 +78,9 @@ const FAQ = () => {
                 ref={(el) => (answerRefs.current[index] = el)}
                 className="overflow-hidden h-0 transition-height"
               >
-                <p className="mt-2 text-gray-600">{faq.answer}</p>
+                <p className="mt-2 text-gray-600 dark:text-white">
+                  {faq.answer}
+                </p>
               </div>
             </div>
           ))}

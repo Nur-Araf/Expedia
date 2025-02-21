@@ -58,8 +58,8 @@ const Navbar = () => {
     <nav
       className={`bg-opacity-90 top-0 sticky transition-all duration-300 z-50 ${
         isScrolling
-          ? "text-blue-700 bg-[#F4E3CF] border-b-2 border-blue-700"
-          : "text-white bg-gradient-to-r from-blue-500 to-indigo-900"
+          ? "text-blue-700 bg-[#F4E3CF] dark:bg-[#1E1E1E] border-b-2 border-blue-700"
+          : "text-white dark:text-gray-900 bg-gradient-to-r from-blue-500 to-indigo-900 dark:from-blue-700 dark:to-indigo-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -271,7 +271,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && isMobile && (
-        <div className="lg:hidden h-screen bg-[url('/Travel.jpg')] bg-cover text-blue-500 space-y-4 px-4 pb-4 pt-4">
+        <div className="lg:hidden h-screen bg-[url('/Travel.jpg')] bg-cover bg-center text-blue-500 space-y-4 px-4 pb-4 pt-4">
           <NavLink
             to="/"
             className={({ isActive }) =>

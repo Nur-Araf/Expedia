@@ -33,7 +33,7 @@ const BannerSlider = () => {
               className="block w-full h-[92dvh] object-cover"
             />
             {/* Black overlay */}
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 dark:bg-opacity-70"></div>
             <div className="absolute top-[20%] left-1/2 transform -translate-x-1/2 text-center">
               <p className="text-blue-500 text-[4rem] lg:text-[5rem] xl:text-[6rem] font-bold tracking-widest">
                 Expedia

@@ -3,7 +3,7 @@ import MyInformation from "./MyInformation";
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 dark:bg-gradient-to-tr dark:from-gray-400 dark:to-gray-800 min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-[#F4E3CF] text-blue-500 py-20">
         <motion.div
